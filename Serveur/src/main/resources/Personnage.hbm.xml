@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10 oct. 2016 11:51:28 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Personnage" table="personnage" catalog="cinema">
+        <composite-id name="id" class="PersonnageId">
+            <key-property name="noFilm" type="int">
+                <column name="NoFilm" />
+            </key-property>
+            <key-property name="noAct" type="int">
+                <column name="NoAct" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="acteur" class="Acteur" update="false" insert="false" fetch="select">
+            <column name="NoAct" not-null="true" />
+        </many-to-one>
+        <many-to-one name="film" class="Film" update="false" insert="false" fetch="select">
+            <column name="NoFilm" not-null="true" />
+        </many-to-one>
+        <property name="nomPers" type="string">
+            <column name="NomPers" length="30" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

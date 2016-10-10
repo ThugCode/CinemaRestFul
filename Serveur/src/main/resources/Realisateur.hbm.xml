@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10 oct. 2016 11:51:28 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Realisateur" table="realisateur" catalog="cinema">
+        <id name="noRea" type="int">
+            <column name="NoRea" />
+            <generator class="assigned" />
+        </id>
+        <property name="nomRea" type="string">
+            <column name="NomRea" length="20" not-null="true" />
+        </property>
+        <property name="prenRea" type="string">
+            <column name="PrenRea" length="20" not-null="true" />
+        </property>
+        <set name="films" table="film" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NoRea" not-null="true" />
+            </key>
+            <one-to-many class="Film" />
+        </set>
+    </class>
+</hibernate-mapping>

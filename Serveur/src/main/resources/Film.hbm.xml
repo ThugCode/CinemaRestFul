@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10 oct. 2016 11:51:28 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Film" table="film" catalog="cinema">
+        <id name="noFilm" type="int">
+            <column name="NoFilm" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="categorie" class="Categorie" fetch="select">
+            <column name="CodeCat" length="2" not-null="true" />
+        </many-to-one>
+        <many-to-one name="realisateur" class="Realisateur" fetch="select">
+            <column name="NoRea" not-null="true" />
+        </many-to-one>
+        <property name="titre" type="string">
+            <column name="Titre" length="30" not-null="true" />
+        </property>
+        <property name="duree" type="int">
+            <column name="Duree" not-null="true" />
+        </property>
+        <property name="dateSortie" type="date">
+            <column name="DateSortie" length="10" not-null="true" />
+        </property>
+        <property name="budget" type="int">
+            <column name="Budget" not-null="true" />
+        </property>
+        <property name="montantRecette" type="int">
+            <column name="MontantRecette" not-null="true" />
+        </property>
+        <set name="personnages" table="personnage" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NoFilm" not-null="true" />
+            </key>
+            <one-to-many class="Personnage" />
+        </set>
+    </class>
+</hibernate-mapping>
