@@ -1,19 +1,21 @@
-package main.resources;
-
-// default package
-// Generated 10 oct. 2016 11:51:28 by Hibernate Tools 3.4.0.CR1
+package main.resources.com.epul.DAO;
+// Generated 10 oct. 2016 23:12:26 by Hibernate Tools 4.0.0
 
 import java.util.List;
+
 import javax.naming.InitialContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
+import main.resources.com.epul.metier.Acteur;
+
 /**
  * Home object for domain model class Acteur.
- * @see .Acteur
+ * @see com.epul.DAO.Acteur
  * @author Hibernate Tools
  */
 public class ActeurHome {
@@ -90,7 +92,7 @@ public class ActeurHome {
 	public Acteur findById(int id) {
 		log.debug("getting Acteur instance with id: " + id);
 		try {
-			Acteur instance = (Acteur) sessionFactory.getCurrentSession().get("Acteur", id);
+			Acteur instance = (Acteur) sessionFactory.getCurrentSession().get("com.epul.DAO.Acteur", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -106,8 +108,8 @@ public class ActeurHome {
 	public List findByExample(Acteur instance) {
 		log.debug("finding Acteur instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("Acteur").add(Example.create(instance))
-					.list();
+			List results = sessionFactory.getCurrentSession().createCriteria("com.epul.DAO.Acteur")
+					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;
 		} catch (RuntimeException re) {

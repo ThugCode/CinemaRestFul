@@ -1,22 +1,26 @@
-// default package
-// Generated 10 oct. 2016 11:51:28 by Hibernate Tools 3.4.0.CR1
+package main.resources.com.epul.DAO;
+// Generated 10 oct. 2016 23:12:26 by Hibernate Tools 4.0.0
 
 import java.util.List;
+
 import javax.naming.InitialContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
+import main.resources.com.epul.metier.Personnage;
+
 /**
- * Home object for domain model class Film.
- * @see .Film
+ * Home object for domain model class Personnage.
+ * @see com.epul.DAO.Personnage
  * @author Hibernate Tools
  */
-public class FilmHome {
+public class PersonnageHome {
 
-	private static final Log log = LogFactory.getLog(FilmHome.class);
+	private static final Log log = LogFactory.getLog(PersonnageHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -29,8 +33,8 @@ public class FilmHome {
 		}
 	}
 
-	public void persist(Film transientInstance) {
-		log.debug("persisting Film instance");
+	public void persist(Personnage transientInstance) {
+		log.debug("persisting Personnage instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
@@ -40,8 +44,8 @@ public class FilmHome {
 		}
 	}
 
-	public void attachDirty(Film instance) {
-		log.debug("attaching dirty Film instance");
+	public void attachDirty(Personnage instance) {
+		log.debug("attaching dirty Personnage instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -51,8 +55,8 @@ public class FilmHome {
 		}
 	}
 
-	public void attachClean(Film instance) {
-		log.debug("attaching clean Film instance");
+	public void attachClean(Personnage instance) {
+		log.debug("attaching clean Personnage instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -62,8 +66,8 @@ public class FilmHome {
 		}
 	}
 
-	public void delete(Film persistentInstance) {
-		log.debug("deleting Film instance");
+	public void delete(Personnage persistentInstance) {
+		log.debug("deleting Personnage instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -73,10 +77,10 @@ public class FilmHome {
 		}
 	}
 
-	public Film merge(Film detachedInstance) {
-		log.debug("merging Film instance");
+	public Personnage merge(Personnage detachedInstance) {
+		log.debug("merging Personnage instance");
 		try {
-			Film result = (Film) sessionFactory.getCurrentSession().merge(detachedInstance);
+			Personnage result = (Personnage) sessionFactory.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -85,10 +89,10 @@ public class FilmHome {
 		}
 	}
 
-	public Film findById(int id) {
-		log.debug("getting Film instance with id: " + id);
+	public Personnage findById(com.epul.DAO.PersonnageId id) {
+		log.debug("getting Personnage instance with id: " + id);
 		try {
-			Film instance = (Film) sessionFactory.getCurrentSession().get("Film", id);
+			Personnage instance = (Personnage) sessionFactory.getCurrentSession().get("com.epul.DAO.Personnage", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -101,11 +105,11 @@ public class FilmHome {
 		}
 	}
 
-	public List findByExample(Film instance) {
-		log.debug("finding Film instance by example");
+	public List findByExample(Personnage instance) {
+		log.debug("finding Personnage instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("Film").add(Example.create(instance))
-					.list();
+			List results = sessionFactory.getCurrentSession().createCriteria("com.epul.DAO.Personnage")
+					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;
 		} catch (RuntimeException re) {

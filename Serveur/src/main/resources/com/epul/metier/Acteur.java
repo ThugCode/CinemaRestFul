@@ -1,7 +1,5 @@
-package main.resources;
-
-// default package
-// Generated 10 oct. 2016 11:51:27 by Hibernate Tools 3.4.0.CR1
+package main.resources.com.epul.metier;
+// Generated 10 oct. 2016 23:12:09 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;

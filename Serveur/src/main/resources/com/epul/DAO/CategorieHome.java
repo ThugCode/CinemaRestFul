@@ -1,22 +1,26 @@
-// default package
-// Generated 10 oct. 2016 11:51:28 by Hibernate Tools 3.4.0.CR1
+package main.resources.com.epul.DAO;
+// Generated 10 oct. 2016 23:12:26 by Hibernate Tools 4.0.0
 
 import java.util.List;
+
 import javax.naming.InitialContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
+import main.resources.com.epul.metier.Categorie;
+
 /**
- * Home object for domain model class Personnage.
- * @see .Personnage
+ * Home object for domain model class Categorie.
+ * @see com.epul.DAO.Categorie
  * @author Hibernate Tools
  */
-public class PersonnageHome {
+public class CategorieHome {
 
-	private static final Log log = LogFactory.getLog(PersonnageHome.class);
+	private static final Log log = LogFactory.getLog(CategorieHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -29,8 +33,8 @@ public class PersonnageHome {
 		}
 	}
 
-	public void persist(Personnage transientInstance) {
-		log.debug("persisting Personnage instance");
+	public void persist(Categorie transientInstance) {
+		log.debug("persisting Categorie instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
@@ -40,8 +44,8 @@ public class PersonnageHome {
 		}
 	}
 
-	public void attachDirty(Personnage instance) {
-		log.debug("attaching dirty Personnage instance");
+	public void attachDirty(Categorie instance) {
+		log.debug("attaching dirty Categorie instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -51,8 +55,8 @@ public class PersonnageHome {
 		}
 	}
 
-	public void attachClean(Personnage instance) {
-		log.debug("attaching clean Personnage instance");
+	public void attachClean(Categorie instance) {
+		log.debug("attaching clean Categorie instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -62,8 +66,8 @@ public class PersonnageHome {
 		}
 	}
 
-	public void delete(Personnage persistentInstance) {
-		log.debug("deleting Personnage instance");
+	public void delete(Categorie persistentInstance) {
+		log.debug("deleting Categorie instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -73,10 +77,10 @@ public class PersonnageHome {
 		}
 	}
 
-	public Personnage merge(Personnage detachedInstance) {
-		log.debug("merging Personnage instance");
+	public Categorie merge(Categorie detachedInstance) {
+		log.debug("merging Categorie instance");
 		try {
-			Personnage result = (Personnage) sessionFactory.getCurrentSession().merge(detachedInstance);
+			Categorie result = (Categorie) sessionFactory.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -85,10 +89,10 @@ public class PersonnageHome {
 		}
 	}
 
-	public Personnage findById(PersonnageId id) {
-		log.debug("getting Personnage instance with id: " + id);
+	public Categorie findById(java.lang.String id) {
+		log.debug("getting Categorie instance with id: " + id);
 		try {
-			Personnage instance = (Personnage) sessionFactory.getCurrentSession().get("Personnage", id);
+			Categorie instance = (Categorie) sessionFactory.getCurrentSession().get("com.epul.DAO.Categorie", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -101,11 +105,11 @@ public class PersonnageHome {
 		}
 	}
 
-	public List findByExample(Personnage instance) {
-		log.debug("finding Personnage instance by example");
+	public List findByExample(Categorie instance) {
+		log.debug("finding Categorie instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("Personnage").add(Example.create(instance))
-					.list();
+			List results = sessionFactory.getCurrentSession().createCriteria("com.epul.DAO.Categorie")
+					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;
 		} catch (RuntimeException re) {
