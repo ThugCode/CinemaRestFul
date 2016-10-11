@@ -12,6 +12,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 import main.resources.com.epul.metier.Personnage;
+import main.resources.com.epul.metier.PersonnageId;
 
 /**
  * Home object for domain model class Personnage.
@@ -89,7 +90,7 @@ public class PersonnageHome {
 		}
 	}
 
-	public Personnage findById(com.epul.DAO.PersonnageId id) {
+	public Personnage findById(PersonnageId id) {
 		log.debug("getting Personnage instance with id: " + id);
 		try {
 			Personnage instance = (Personnage) sessionFactory.getCurrentSession().get("com.epul.DAO.Personnage", id);
