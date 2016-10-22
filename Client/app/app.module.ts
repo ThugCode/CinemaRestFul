@@ -1,9 +1,19 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
+
 import { AppComponent }   from './app.component';
+import { FilmService } from './service/film.service'
+
 @NgModule({
-  imports:      [ BrowserModule ],
+  imports:      [ 
+    BrowserModule,
+    HttpModule
+   ],
   declarations: [ AppComponent ],
+  providers: [
+    FilmService
+  ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
