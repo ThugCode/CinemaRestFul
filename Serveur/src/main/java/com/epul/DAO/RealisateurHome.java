@@ -1,4 +1,4 @@
-package main.resources.com.epul.DAO;
+package main.java.com.epul.DAO;
 // Generated 10 oct. 2016 23:12:26 by Hibernate Tools 4.0.0
 
 import java.util.List;
@@ -11,16 +11,16 @@ import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
-import main.resources.com.epul.metier.Acteur;
+import main.java.com.epul.metier.Realisateur;
 
 /**
- * Home object for domain model class Acteur.
- * @see com.epul.DAO.Acteur
+ * Home object for domain model class Realisateur.
+ * @see com.epul.DAO.Realisateur
  * @author Hibernate Tools
  */
-public class ActeurHome {
+public class RealisateurHome {
 
-	private static final Log log = LogFactory.getLog(ActeurHome.class);
+	private static final Log log = LogFactory.getLog(RealisateurHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -33,8 +33,8 @@ public class ActeurHome {
 		}
 	}
 
-	public void persist(Acteur transientInstance) {
-		log.debug("persisting Acteur instance");
+	public void persist(Realisateur transientInstance) {
+		log.debug("persisting Realisateur instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
@@ -44,8 +44,8 @@ public class ActeurHome {
 		}
 	}
 
-	public void attachDirty(Acteur instance) {
-		log.debug("attaching dirty Acteur instance");
+	public void attachDirty(Realisateur instance) {
+		log.debug("attaching dirty Realisateur instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -55,8 +55,8 @@ public class ActeurHome {
 		}
 	}
 
-	public void attachClean(Acteur instance) {
-		log.debug("attaching clean Acteur instance");
+	public void attachClean(Realisateur instance) {
+		log.debug("attaching clean Realisateur instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -66,8 +66,8 @@ public class ActeurHome {
 		}
 	}
 
-	public void delete(Acteur persistentInstance) {
-		log.debug("deleting Acteur instance");
+	public void delete(Realisateur persistentInstance) {
+		log.debug("deleting Realisateur instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -77,10 +77,10 @@ public class ActeurHome {
 		}
 	}
 
-	public Acteur merge(Acteur detachedInstance) {
-		log.debug("merging Acteur instance");
+	public Realisateur merge(Realisateur detachedInstance) {
+		log.debug("merging Realisateur instance");
 		try {
-			Acteur result = (Acteur) sessionFactory.getCurrentSession().merge(detachedInstance);
+			Realisateur result = (Realisateur) sessionFactory.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -89,10 +89,10 @@ public class ActeurHome {
 		}
 	}
 
-	public Acteur findById(int id) {
-		log.debug("getting Acteur instance with id: " + id);
+	public Realisateur findById(int id) {
+		log.debug("getting Realisateur instance with id: " + id);
 		try {
-			Acteur instance = (Acteur) sessionFactory.getCurrentSession().get("com.epul.DAO.Acteur", id);
+			Realisateur instance = (Realisateur) sessionFactory.getCurrentSession().get("com.epul.DAO.Realisateur", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -105,10 +105,10 @@ public class ActeurHome {
 		}
 	}
 
-	public List findByExample(Acteur instance) {
-		log.debug("finding Acteur instance by example");
+	public List findByExample(Realisateur instance) {
+		log.debug("finding Realisateur instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("com.epul.DAO.Acteur")
+			List results = sessionFactory.getCurrentSession().createCriteria("com.epul.DAO.Realisateur")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;

@@ -1,4 +1,4 @@
-package main.resources.com.epul.DAO;
+package main.java.com.epul.DAO;
 // Generated 10 oct. 2016 23:12:26 by Hibernate Tools 4.0.0
 
 import java.util.List;
@@ -11,16 +11,16 @@ import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
-import main.resources.com.epul.metier.Film;
+import main.java.com.epul.metier.Categorie;
 
 /**
- * Home object for domain model class Film.
- * @see com.epul.DAO.Film
+ * Home object for domain model class Categorie.
+ * @see com.epul.DAO.Categorie
  * @author Hibernate Tools
  */
-public class FilmHome {
+public class CategorieHome {
 
-	private static final Log log = LogFactory.getLog(FilmHome.class);
+	private static final Log log = LogFactory.getLog(CategorieHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -33,8 +33,8 @@ public class FilmHome {
 		}
 	}
 
-	public void persist(Film transientInstance) {
-		log.debug("persisting Film instance");
+	public void persist(Categorie transientInstance) {
+		log.debug("persisting Categorie instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
@@ -44,8 +44,8 @@ public class FilmHome {
 		}
 	}
 
-	public void attachDirty(Film instance) {
-		log.debug("attaching dirty Film instance");
+	public void attachDirty(Categorie instance) {
+		log.debug("attaching dirty Categorie instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -55,8 +55,8 @@ public class FilmHome {
 		}
 	}
 
-	public void attachClean(Film instance) {
-		log.debug("attaching clean Film instance");
+	public void attachClean(Categorie instance) {
+		log.debug("attaching clean Categorie instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -66,12 +66,8 @@ public class FilmHome {
 		}
 	}
 
-	public List<Film> getListFilm() {
-		return sessionFactory.getCurrentSession().createCriteria(Film.class).list();
-	}
-	
-	public void delete(Film persistentInstance) {
-		log.debug("deleting Film instance");
+	public void delete(Categorie persistentInstance) {
+		log.debug("deleting Categorie instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -81,10 +77,10 @@ public class FilmHome {
 		}
 	}
 
-	public Film merge(Film detachedInstance) {
-		log.debug("merging Film instance");
+	public Categorie merge(Categorie detachedInstance) {
+		log.debug("merging Categorie instance");
 		try {
-			Film result = (Film) sessionFactory.getCurrentSession().merge(detachedInstance);
+			Categorie result = (Categorie) sessionFactory.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -93,10 +89,10 @@ public class FilmHome {
 		}
 	}
 
-	public Film findById(int id) {
-		log.debug("getting Film instance with id: " + id);
+	public Categorie findById(java.lang.String id) {
+		log.debug("getting Categorie instance with id: " + id);
 		try {
-			Film instance = (Film) sessionFactory.getCurrentSession().get("com.epul.DAO.Film", id);
+			Categorie instance = (Categorie) sessionFactory.getCurrentSession().get("com.epul.DAO.Categorie", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -109,10 +105,10 @@ public class FilmHome {
 		}
 	}
 
-	public List findByExample(Film instance) {
-		log.debug("finding Film instance by example");
+	public List findByExample(Categorie instance) {
+		log.debug("finding Categorie instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("com.epul.DAO.Film")
+			List results = sessionFactory.getCurrentSession().createCriteria("com.epul.DAO.Categorie")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;

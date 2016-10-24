@@ -12,10 +12,11 @@
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.search.autoregister_listeners">false</property>
         <property name="hibernate.show_sql">true</property>
-        <mapping resource="Categorie.hbm.xml" />
-        <mapping resource="Acteur.hbm.xml" />
-        <mapping resource="Film.hbm.xml" />
-        <mapping resource="Personnage.hbm.xml" />
-        <mapping resource="Realisateur.hbm.xml" />
+        
+        <mapping resource="main.resources.Categorie.hbm.xml" />
+        <mapping resource="main.resources.Acteur.hbm.xml" />
+        <mapping resource="main.resources.Film.hbm.xml" />
+        <mapping resource="main.resources.Personnage.hbm.xml" />
+        <mapping resource="main.resources.Realisateur.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

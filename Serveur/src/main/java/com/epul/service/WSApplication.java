@@ -1,4 +1,4 @@
-package main.resources.com.epul.service;
+package main.java.com.epul.service;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package main.resources.com.epul.service;
+package main.java.com.epul.service;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import javax.ws.rs.Produces;
 
 import com.google.gson.Gson;
 
-import main.resources.com.epul.DAO.FilmHome;
-import main.resources.com.epul.metier.Film;
+import main.java.com.epul.DAO.FilmHome;
+import main.java.com.epul.metier.Film;
 
 @Path("/mediatheque")
 public class WService {

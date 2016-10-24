@@ -1,4 +1,4 @@
-package main.resources.com.epul.DAO;
+package main.java.com.epul.DAO;
 // Generated 10 oct. 2016 23:12:26 by Hibernate Tools 4.0.0
 
 import java.util.List;
@@ -11,16 +11,17 @@ import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
-import main.resources.com.epul.metier.Realisateur;
+import main.java.com.epul.metier.Personnage;
+import main.java.com.epul.metier.PersonnageId;
 
 /**
- * Home object for domain model class Realisateur.
- * @see com.epul.DAO.Realisateur
+ * Home object for domain model class Personnage.
+ * @see com.epul.DAO.Personnage
  * @author Hibernate Tools
  */
-public class RealisateurHome {
+public class PersonnageHome {
 
-	private static final Log log = LogFactory.getLog(RealisateurHome.class);
+	private static final Log log = LogFactory.getLog(PersonnageHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -33,8 +34,8 @@ public class RealisateurHome {
 		}
 	}
 
-	public void persist(Realisateur transientInstance) {
-		log.debug("persisting Realisateur instance");
+	public void persist(Personnage transientInstance) {
+		log.debug("persisting Personnage instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
@@ -44,8 +45,8 @@ public class RealisateurHome {
 		}
 	}
 
-	public void attachDirty(Realisateur instance) {
-		log.debug("attaching dirty Realisateur instance");
+	public void attachDirty(Personnage instance) {
+		log.debug("attaching dirty Personnage instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -55,8 +56,8 @@ public class RealisateurHome {
 		}
 	}
 
-	public void attachClean(Realisateur instance) {
-		log.debug("attaching clean Realisateur instance");
+	public void attachClean(Personnage instance) {
+		log.debug("attaching clean Personnage instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -66,8 +67,8 @@ public class RealisateurHome {
 		}
 	}
 
-	public void delete(Realisateur persistentInstance) {
-		log.debug("deleting Realisateur instance");
+	public void delete(Personnage persistentInstance) {
+		log.debug("deleting Personnage instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -77,10 +78,10 @@ public class RealisateurHome {
 		}
 	}
 
-	public Realisateur merge(Realisateur detachedInstance) {
-		log.debug("merging Realisateur instance");
+	public Personnage merge(Personnage detachedInstance) {
+		log.debug("merging Personnage instance");
 		try {
-			Realisateur result = (Realisateur) sessionFactory.getCurrentSession().merge(detachedInstance);
+			Personnage result = (Personnage) sessionFactory.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -89,10 +90,10 @@ public class RealisateurHome {
 		}
 	}
 
-	public Realisateur findById(int id) {
-		log.debug("getting Realisateur instance with id: " + id);
+	public Personnage findById(PersonnageId id) {
+		log.debug("getting Personnage instance with id: " + id);
 		try {
-			Realisateur instance = (Realisateur) sessionFactory.getCurrentSession().get("com.epul.DAO.Realisateur", id);
+			Personnage instance = (Personnage) sessionFactory.getCurrentSession().get("com.epul.DAO.Personnage", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -105,10 +106,10 @@ public class RealisateurHome {
 		}
 	}
 
-	public List findByExample(Realisateur instance) {
-		log.debug("finding Realisateur instance by example");
+	public List findByExample(Personnage instance) {
+		log.debug("finding Personnage instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("com.epul.DAO.Realisateur")
+			List results = sessionFactory.getCurrentSession().createCriteria("com.epul.DAO.Personnage")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;
