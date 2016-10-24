@@ -9,6 +9,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import org.hibernate.Transaction;
+
 import com.google.gson.Gson;
 
 import main.java.com.epul.DAO.FilmHome;

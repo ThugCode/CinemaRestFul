@@ -19,14 +19,20 @@ import main.java.com.epul.util.HibernateUtil;
  * @see com.epul.DAO.Film
  * @author Hibernate Tools
  */
-public class FilmHome {
+public class FilmHome extends AbstractHome {
 
 	private static final Log log = LogFactory.getLog(FilmHome.class);
 
+	public FilmHome() {
+		super();
+	}
+	
 	public void persist(Film transientInstance) {
 		log.debug("persisting Film instance");
 		try {
-			HibernateUtil.getSessionFactory().getCurrentSession().persist(transientInstance);
+			session.beginTransaction();
+			session.persist(transientInstance);
+			session.getTransaction().commit();
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -37,7 +43,9 @@ public class FilmHome {
 	public void attachDirty(Film instance) {
 		log.debug("attaching dirty Film instance");
 		try {
-			HibernateUtil.getSessionFactory().getCurrentSession().saveOrUpdate(instance);
+			session.beginTransaction();
+			session.saveOrUpdate(instance);
+			session.getTransaction().commit();
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -48,7 +56,9 @@ public class FilmHome {
 	public void attachClean(Film instance) {
 		log.debug("attaching clean Film instance");
 		try {
-			HibernateUtil.getSessionFactory().getCurrentSession().lock(instance, LockMode.NONE);
+			session.beginTransaction();
+			session.lock(instance, LockMode.NONE);
+			session.getTransaction().commit();
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,13 +67,18 @@ public class FilmHome {
 	}
 
 	public List<Film> getListFilm() {
-		return HibernateUtil.getSessionFactory().getCurrentSession().createCriteria(Film.class).list();
+		session.beginTransaction();
+		List<Film> list = session.createCriteria(Film.class).list();
+		session.getTransaction().commit();
+		return list;
 	}
 	
 	public void delete(Film persistentInstance) {
 		log.debug("deleting Film instance");
 		try {
-			HibernateUtil.getSessionFactory().getCurrentSession().delete(persistentInstance);
+			session.beginTransaction();
+			session.delete(persistentInstance);
+			session.getTransaction().commit();
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -74,7 +89,9 @@ public class FilmHome {
 	public Film merge(Film detachedInstance) {
 		log.debug("merging Film instance");
 		try {
-			Film result = (Film) HibernateUtil.getSessionFactory().getCurrentSession().merge(detachedInstance);
+			session.beginTransaction();
+			Film result = (Film) session.merge(detachedInstance);
+			session.getTransaction().commit();
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -86,7 +103,9 @@ public class FilmHome {
 	public Film findById(int id) {
 		log.debug("getting Film instance with id: " + id);
 		try {
-			Film instance = (Film) HibernateUtil.getSessionFactory().getCurrentSession().get("com.epul.DAO.Film", id);
+			session.beginTransaction();
+			Film instance = (Film) session.get("com.epul.DAO.Film", id);
+			session.getTransaction().commit();
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -102,8 +121,9 @@ public class FilmHome {
 	public List findByExample(Film instance) {
 		log.debug("finding Film instance by example");
 		try {
-			List results = HibernateUtil.getSessionFactory().getCurrentSession().createCriteria("com.epul.DAO.Film")
-					.add(Example.create(instance)).list();
+			session.beginTransaction();
+			List results = session.createCriteria("com.epul.DAO.Film").add(Example.create(instance)).list();
+			session.getTransaction().commit();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;
 		} catch (RuntimeException re) {
