@@ -3,16 +3,12 @@ package main.java.com.epul.DAO;
 
 import java.util.List;
 
-import javax.naming.InitialContext;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 import main.java.com.epul.metier.Film;
-import main.java.com.epul.util.HibernateUtil;
 
 /**
  * Home object for domain model class Film.

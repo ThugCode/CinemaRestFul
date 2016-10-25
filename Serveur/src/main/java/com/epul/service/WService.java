@@ -2,21 +2,17 @@ package main.java.com.epul.service;
 
 import java.util.List;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-
-import org.hibernate.Transaction;
-
-import com.google.gson.Gson;
+import javax.ws.rs.core.MediaType;
 
 import main.java.com.epul.DAO.FilmHome;
 import main.java.com.epul.metier.Film;
 
-@Path("/mediatheque")
+@Path("/test")
 public class WService {
 	
 	
@@ -24,34 +20,29 @@ public class WService {
 	/***************          FILM          **************/
 	/*****************************************************/
 	@POST
-	@Path("/Film/ajout/{film}")
-	@Consumes("application/json")	
-	public void insertionFilm(String aFilm) {
-		FilmHome filmDAO = new FilmHome();
-		Gson gson = new Gson();
-		Film film = (Film) gson.fromJson(aFilm, Film.class);
-		filmDAO.attachDirty(film);
+	@Path("/film/ajout/{film}")
+	@Produces(MediaType.APPLICATION_XML)	
+	public void insertionFilm(Film film) {
+		//FilmHome filmDAO = new FilmHome();
+		//filmDAO.attachDirty(film);
 	}
 	
 	@GET
-	@Path("/Film")
-	@Produces("application/json")
-	public String listeFilms() {
+	@Path("/film")
+	@Produces(MediaType.APPLICATION_XML)
+	public List<Film> listeFilms() {
 		
 		FilmHome filmDAO = new FilmHome();
-		List<Film> listeFilms = filmDAO.getListFilm();
-		
-		Gson gson = new Gson();
-		return gson.toJson(listeFilms);
+		return filmDAO.getListFilm();
 	}
+	
 
 	@GET
-	@Path("/Film/{Id}")
-	@Produces("application/json")
-	public String rechercheFilmId(@PathParam("Id")  String idFilm)
+	@Path("/film/{Id}")
+	@Produces(MediaType.APPLICATION_XML)
+	public Film rechercheFilmId(@PathParam("Id")  int idFilm)
 	{
 		FilmHome filmDAO = new FilmHome();
-		Gson gson = new Gson();
-		return gson.toJson(filmDAO.findById(Integer.parseInt(idFilm)));
+		return filmDAO.findById(idFilm);
 	}
 }

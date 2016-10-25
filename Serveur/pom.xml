@@ -63,13 +63,13 @@
 			<version>5.0.0.Final</version>
 		</dependency>
 		
+		<!-- Hibernate library dependecy start -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.18</version>
 		</dependency>
 
-		<!-- Hibernate library dependecy start -->
 		<dependency>
 			<groupId>dom4j</groupId>
 			<artifactId>dom4j</artifactId>
@@ -82,6 +82,7 @@
 			<version>3.3.1</version>
 		</dependency>
 		
+		<!-- Jersey For RESTful Web services -->
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-bundle</artifactId>
@@ -99,24 +100,21 @@
 			<artifactId>jersey-server</artifactId>
 			<version>1.19</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20090211</version>
-		</dependency>
+		<!-- End Jersey -->
 
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.7</version>
-		</dependency>
-
+		<!-- commons-logging For Log in java -->
 		<dependency>
 		  <groupId>commons-logging</groupId>
 		  <artifactId>commons-logging</artifactId>
 		  <version>1.1.1</version>
 		</dependency>
+		
+		<!-- JAX-B For XML -->
+		<dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.2.4</version>
+        </dependency>
 
 	</dependencies>
 
