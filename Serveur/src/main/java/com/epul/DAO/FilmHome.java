@@ -100,7 +100,7 @@ public class FilmHome extends AbstractHome {
 		log.debug("getting Film instance with id: " + id);
 		try {
 			session.beginTransaction();
-			Film instance = (Film) session.get("com.epul.DAO.Film", id);
+			Film instance = (Film) session.get("main.java.com.epul.metier.Film", id);
 			session.getTransaction().commit();
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -118,7 +118,7 @@ public class FilmHome extends AbstractHome {
 		log.debug("finding Film instance by example");
 		try {
 			session.beginTransaction();
-			List results = session.createCriteria("com.epul.DAO.Film").add(Example.create(instance)).list();
+			List results = session.createCriteria("main.java.com.epul.metier.Film").add(Example.create(instance)).list();
 			session.getTransaction().commit();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;

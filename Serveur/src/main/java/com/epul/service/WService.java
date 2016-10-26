@@ -9,7 +9,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import main.java.com.epul.DAO.CategorieHome;
 import main.java.com.epul.DAO.FilmHome;
+import main.java.com.epul.metier.Categorie;
 import main.java.com.epul.metier.Film;
 
 @Path("/test")
@@ -19,14 +21,6 @@ public class WService {
 	/*****************************************************/
 	/***************          FILM          **************/
 	/*****************************************************/
-	@POST
-	@Path("/film/ajout/{film}")
-	@Produces(MediaType.APPLICATION_XML)	
-	public void insertionFilm(Film film) {
-		//FilmHome filmDAO = new FilmHome();
-		//filmDAO.attachDirty(film);
-	}
-	
 	@GET
 	@Path("/film")
 	@Produces(MediaType.APPLICATION_XML)
@@ -36,7 +30,6 @@ public class WService {
 		return filmDAO.getListFilm();
 	}
 	
-
 	@GET
 	@Path("/film/{Id}")
 	@Produces(MediaType.APPLICATION_XML)
@@ -44,5 +37,26 @@ public class WService {
 	{
 		FilmHome filmDAO = new FilmHome();
 		return filmDAO.findById(idFilm);
+	}
+	
+	@POST
+	@Path("/film/add/{film}")
+	@Produces(MediaType.APPLICATION_XML)	
+	public void insertionFilm(Film film) {
+		FilmHome filmDAO = new FilmHome();
+		filmDAO.attachDirty(film);
+	}
+	
+	
+	/*****************************************************/
+	/***************          FILM          **************/
+	/*****************************************************/
+	@GET
+	@Path("/categorie")
+	@Produces(MediaType.APPLICATION_XML)
+	public List<Categorie> listCategorie() {
+		
+		CategorieHome categorieDAO = new CategorieHome();
+		return categorieDAO.getListCategorie();
 	}
 }

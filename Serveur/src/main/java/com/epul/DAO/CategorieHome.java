@@ -3,40 +3,31 @@ package main.java.com.epul.DAO;
 
 import java.util.List;
 
-import javax.naming.InitialContext;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
-import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 import main.java.com.epul.metier.Categorie;
+import main.java.com.epul.metier.Film;
 
 /**
  * Home object for domain model class Categorie.
  * @see com.epul.DAO.Categorie
  * @author Hibernate Tools
  */
-public class CategorieHome {
+public class CategorieHome extends AbstractHome {
 
 	private static final Log log = LogFactory.getLog(CategorieHome.class);
 
-	private final SessionFactory sessionFactory = getSessionFactory();
-
-	protected SessionFactory getSessionFactory() {
-		try {
-			return (SessionFactory) new InitialContext().lookup("SessionFactory");
-		} catch (Exception e) {
-			log.error("Could not locate SessionFactory in JNDI", e);
-			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
-		}
+	public CategorieHome() {
+		super();
 	}
 
 	public void persist(Categorie transientInstance) {
 		log.debug("persisting Categorie instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			session.persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -47,7 +38,7 @@ public class CategorieHome {
 	public void attachDirty(Categorie instance) {
 		log.debug("attaching dirty Categorie instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			session.saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -58,18 +49,25 @@ public class CategorieHome {
 	public void attachClean(Categorie instance) {
 		log.debug("attaching clean Categorie instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			session.lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
 			throw re;
 		}
 	}
+	
+	public List<Categorie> getListCategorie() {
+		session.beginTransaction();
+		List<Categorie> list = session.createCriteria(Categorie.class).list();
+		session.getTransaction().commit();
+		return list;
+	}
 
 	public void delete(Categorie persistentInstance) {
 		log.debug("deleting Categorie instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			session.delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -80,7 +78,7 @@ public class CategorieHome {
 	public Categorie merge(Categorie detachedInstance) {
 		log.debug("merging Categorie instance");
 		try {
-			Categorie result = (Categorie) sessionFactory.getCurrentSession().merge(detachedInstance);
+			Categorie result = (Categorie) session.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -92,7 +90,7 @@ public class CategorieHome {
 	public Categorie findById(java.lang.String id) {
 		log.debug("getting Categorie instance with id: " + id);
 		try {
-			Categorie instance = (Categorie) sessionFactory.getCurrentSession().get("com.epul.DAO.Categorie", id);
+			Categorie instance = (Categorie) session.get("main.java.com.epul.metier.Categorie", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -108,7 +106,7 @@ public class CategorieHome {
 	public List findByExample(Categorie instance) {
 		log.debug("finding Categorie instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("com.epul.DAO.Categorie")
+			List results = session.createCriteria("main.java.com.epul.metier.Categorie")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;
