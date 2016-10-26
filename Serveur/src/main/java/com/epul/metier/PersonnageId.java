@@ -16,7 +16,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class PersonnageId implements java.io.Serializable {
 	private static final long serialVersionUID = -2241491997506233960L;
 	
+	@Column(name = "NoFilm", nullable = false)
 	private int noFilm;
+	@Column(name = "NoAct", nullable = false)
 	private int noAct;
 
 	public PersonnageId() {
@@ -27,7 +29,6 @@ public class PersonnageId implements java.io.Serializable {
 		this.noAct = noAct;
 	}
 
-	@Column(name = "NoFilm", nullable = false)
 	public int getNoFilm() {
 		return this.noFilm;
 	}
@@ -36,7 +37,6 @@ public class PersonnageId implements java.io.Serializable {
 		this.noFilm = noFilm;
 	}
 
-	@Column(name = "NoAct", nullable = false)
 	public int getNoAct() {
 		return this.noAct;
 	}

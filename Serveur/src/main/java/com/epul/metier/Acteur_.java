@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="Dali", date="2016-10-25T08:44:53.142+0200")
+@Generated(value="Dali", date="2016-10-26T00:03:06.499+0200")
 @StaticMetamodel(Acteur.class)
 public class Acteur_ {
 	public static volatile SingularAttribute<Acteur, Integer> noAct;

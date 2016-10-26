@@ -24,10 +24,15 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Realisateur implements java.io.Serializable {
 	private static final long serialVersionUID = 3742599827373516148L;
 	
+	@Id
+	@Column(name = "NoRea", unique = true, nullable = false)
 	private int noRea;
+	@Column(name = "NomRea", nullable = false, length = 20)
 	private String nomRea;
+	@Column(name = "PrenRea", nullable = false, length = 20)
 	private String prenRea;
 	@XmlTransient
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "realisateur")
 	private Set<Film> films = new HashSet<Film>(0);
 
 	public Realisateur() {
@@ -45,10 +50,7 @@ public class Realisateur implements java.io.Serializable {
 		this.prenRea = prenRea;
 		this.films = films;
 	}
-
-	@Id
-
-	@Column(name = "NoRea", unique = true, nullable = false)
+	
 	public int getNoRea() {
 		return this.noRea;
 	}
@@ -57,7 +59,6 @@ public class Realisateur implements java.io.Serializable {
 		this.noRea = noRea;
 	}
 
-	@Column(name = "NomRea", nullable = false, length = 20)
 	public String getNomRea() {
 		return this.nomRea;
 	}
@@ -66,7 +67,6 @@ public class Realisateur implements java.io.Serializable {
 		this.nomRea = nomRea;
 	}
 
-	@Column(name = "PrenRea", nullable = false, length = 20)
 	public String getPrenRea() {
 		return this.prenRea;
 	}
@@ -75,7 +75,6 @@ public class Realisateur implements java.io.Serializable {
 		this.prenRea = prenRea;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "realisateur")
 	public Set<Film> getFilms() {
 		return this.films;
 	}

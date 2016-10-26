@@ -24,9 +24,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Personnage implements java.io.Serializable {
 	private static final long serialVersionUID = 6735270888573150495L;
 	
+	@EmbeddedId
+	@AttributeOverrides({ 
+		@AttributeOverride(name = "noFilm", column = @Column(name = "NoFilm", nullable = false)),
+		@AttributeOverride(name = "noAct", column = @Column(name = "NoAct", nullable = false)) 
+	})
 	private PersonnageId id;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "NoAct", nullable = false, insertable = false, updatable = false)
 	private Acteur acteur;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "NoFilm", nullable = false, insertable = false, updatable = false)
 	private Film film;
+	@Column(name = "NomPers", nullable = false, length = 30)
 	private String nomPers;
 
 	public Personnage() {
@@ -39,10 +49,7 @@ public class Personnage implements java.io.Serializable {
 		this.nomPers = nomPers;
 	}
 
-	@EmbeddedId
-
-	@AttributeOverrides({ @AttributeOverride(name = "noFilm", column = @Column(name = "NoFilm", nullable = false)),
-			@AttributeOverride(name = "noAct", column = @Column(name = "NoAct", nullable = false)) })
+	
 	public PersonnageId getId() {
 		return this.id;
 	}
@@ -51,8 +58,6 @@ public class Personnage implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "NoAct", nullable = false, insertable = false, updatable = false)
 	public Acteur getActeur() {
 		return this.acteur;
 	}
@@ -61,8 +66,6 @@ public class Personnage implements java.io.Serializable {
 		this.acteur = acteur;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "NoFilm", nullable = false, insertable = false, updatable = false)
 	public Film getFilm() {
 		return this.film;
 	}
@@ -71,7 +74,6 @@ public class Personnage implements java.io.Serializable {
 		this.film = film;
 	}
 
-	@Column(name = "NomPers", nullable = false, length = 30)
 	public String getNomPers() {
 		return this.nomPers;
 	}

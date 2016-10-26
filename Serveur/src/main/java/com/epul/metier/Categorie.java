@@ -24,9 +24,13 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Categorie implements java.io.Serializable {
 	private static final long serialVersionUID = -64893359793689852L;
 	
+	@Id
+	@Column(name = "CodeCat", unique = true, nullable = false, length = 2)
 	private String codeCat;
+	@Column(name = "LibelleCat", nullable = false, length = 20)
 	private String libelleCat;
 	@XmlTransient
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorie")
 	private Set<Film> films = new HashSet<Film>(0);
 
 	public Categorie() {
@@ -43,9 +47,6 @@ public class Categorie implements java.io.Serializable {
 		this.films = films;
 	}
 
-	@Id
-
-	@Column(name = "CodeCat", unique = true, nullable = false, length = 2)
 	public String getCodeCat() {
 		return this.codeCat;
 	}
@@ -54,7 +55,6 @@ public class Categorie implements java.io.Serializable {
 		this.codeCat = codeCat;
 	}
 
-	@Column(name = "LibelleCat", nullable = false, length = 20)
 	public String getLibelleCat() {
 		return this.libelleCat;
 	}
@@ -63,7 +63,6 @@ public class Categorie implements java.io.Serializable {
 		this.libelleCat = libelleCat;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categorie")
 	public Set<Film> getFilms() {
 		return this.films;
 	}

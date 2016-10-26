@@ -29,12 +29,21 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Acteur implements java.io.Serializable {
 	private static final long serialVersionUID = 2498857160112461587L;
 	
+	@Id
+	@Column(name = "NoAct", unique = true, nullable = false)
 	private int noAct;
+	@Column(name = "NomAct", nullable = false, length = 20)
 	private String nomAct;
+	@Column(name = "PrenAct", length = 20)
 	private String prenAct;
+	@Temporal(TemporalType.DATE)
+	@Column(name = "DateNaiss", length = 10)
 	private Date dateNaiss;
+	@Temporal(TemporalType.DATE)
+	@Column(name = "DateDeces", length = 10)
 	private Date dateDeces;
 	@XmlTransient
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "acteur")
 	private Set<Personnage> personnages = new HashSet<Personnage>(0);
 
 	public Acteur() {
@@ -55,8 +64,6 @@ public class Acteur implements java.io.Serializable {
 		this.personnages = personnages;
 	}
 
-	@Id
-	@Column(name = "NoAct", unique = true, nullable = false)
 	public int getNoAct() {
 		return this.noAct;
 	}
@@ -65,7 +72,6 @@ public class Acteur implements java.io.Serializable {
 		this.noAct = noAct;
 	}
 
-	@Column(name = "NomAct", nullable = false, length = 20)
 	public String getNomAct() {
 		return this.nomAct;
 	}
@@ -74,7 +80,6 @@ public class Acteur implements java.io.Serializable {
 		this.nomAct = nomAct;
 	}
 
-	@Column(name = "PrenAct", length = 20)
 	public String getPrenAct() {
 		return this.prenAct;
 	}
@@ -83,8 +88,6 @@ public class Acteur implements java.io.Serializable {
 		this.prenAct = prenAct;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "DateNaiss", length = 10)
 	public Date getDateNaiss() {
 		return this.dateNaiss;
 	}
@@ -93,8 +96,6 @@ public class Acteur implements java.io.Serializable {
 		this.dateNaiss = dateNaiss;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "DateDeces", length = 10)
 	public Date getDateDeces() {
 		return this.dateDeces;
 	}
@@ -103,7 +104,6 @@ public class Acteur implements java.io.Serializable {
 		this.dateDeces = dateDeces;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "acteur")
 	public Set<Personnage> getPersonnages() {
 		return this.personnages;
 	}
@@ -111,5 +111,4 @@ public class Acteur implements java.io.Serializable {
 	public void setPersonnages(Set<Personnage> personnages) {
 		this.personnages = personnages;
 	}
-
 }
