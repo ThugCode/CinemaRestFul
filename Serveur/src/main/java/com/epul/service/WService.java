@@ -41,7 +41,7 @@ public class WService {
 	}
 	
 	@POST
-	@Path("/films/search/{film}")
+	@Path("/films/search/")
 	@Consumes(MediaType.APPLICATION_XML)
 	@Produces(MediaType.APPLICATION_XML)
 	public List<Film> searchFilm(Film film)
@@ -51,7 +51,7 @@ public class WService {
 	}
 	
 	@POST
-	@Path("/films/add/{film}")
+	@Path("/films/add/")
 	@Consumes(MediaType.APPLICATION_XML)	
 	public void insertionFilm(Film film) {
 		FilmHome filmDAO = new FilmHome();
@@ -59,7 +59,7 @@ public class WService {
 	}
 	
 	@POST
-	@Path("/films/update/{film}")
+	@Path("/films/update/")
 	@Consumes(MediaType.APPLICATION_XML)	
 	public void miseAJourFilm(Film film) {
 		FilmHome filmDAO = new FilmHome();
