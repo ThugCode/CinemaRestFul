@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,6 +22,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import main.java.com.epul.metier.Categorie;
+import main.java.com.epul.metier.Realisateur;
 import main.java.com.epul.util.DateFormater;
 
 /**
@@ -55,7 +58,7 @@ public class Film implements java.io.Serializable {
 	@Column(name = "MontantRecette", nullable = false)
 	private int montantRecette;
 	@XmlTransient
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "film")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "film", orphanRemoval = true, cascade = CascadeType.ALL)
 	private Set<Personnage> personnages = new HashSet<Personnage>(0);
 
 	public Film() {

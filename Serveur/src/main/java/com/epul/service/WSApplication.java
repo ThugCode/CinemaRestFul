@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-// addresse de basse pour acc�der au WS
+// adresse de base pour accéder au WS
 @ApplicationPath("/")
 public class WSApplication extends Application {
 	private Set<Object> singletons = new HashSet<Object>();

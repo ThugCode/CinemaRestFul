@@ -9,6 +9,7 @@ import org.hibernate.LockMode;
 import org.hibernate.criterion.Example;
 
 import main.java.com.epul.metier.Film;
+import main.java.com.epul.util.HibernateUtil;
 
 /**
  * Home object for domain model class Film.
@@ -69,11 +70,16 @@ public class FilmHome extends AbstractHome {
 		return list;
 	}
 	
-	public void delete(Film persistentInstance) {
+	public void delete(Film instance) {
 		log.debug("deleting Film instance");
 		try {
+			if(!session.isOpen())
+				session = HibernateUtil.getSessionFactory().openSession();
+			
 			session.beginTransaction();
-			session.delete(persistentInstance);
+			session.delete(instance);
+			session.flush();
+			session.clear();
 			session.getTransaction().commit();
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
