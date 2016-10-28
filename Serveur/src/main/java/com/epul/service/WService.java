@@ -1,7 +1,5 @@
 package main.java.com.epul.service;
 
-import java.util.List;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,7 +8,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import main.java.com.epul.metier.Categorie;
+import com.google.gson.Gson;
+
 import main.java.com.epul.DAO.CategorieHome;
 import main.java.com.epul.DAO.FilmHome;
 import main.java.com.epul.metier.Film;
@@ -24,35 +23,38 @@ public class WService {
 	/*****************************************************/
 	@GET
 	@Path("/films")
-	@Produces(MediaType.APPLICATION_XML)
-	public List<Film> listeFilms() {
+	@Produces(MediaType.APPLICATION_JSON)
+	public String listeFilms() {
 		
 		FilmHome filmDAO = new FilmHome();
-		return filmDAO.getListFilm();
+		Gson gson = new Gson();		
+		return gson.toJson(filmDAO.getListFilm());
 	}
 	
 	@GET
 	@Path("/films/get/{id}")
-	@Produces(MediaType.APPLICATION_XML)
-	public Film getFilmById(@PathParam("id")  int idFilm)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getFilmById(@PathParam("id")  int idFilm)
 	{
 		FilmHome filmDAO = new FilmHome();
-		return filmDAO.findById(idFilm);
+		Gson gson = new Gson();
+		return gson.toJson(filmDAO.findById(idFilm));
 	}
 	
 	@POST
 	@Path("/films/search/")
-	@Consumes(MediaType.APPLICATION_XML)
-	@Produces(MediaType.APPLICATION_XML)
-	public List<Film> searchFilm(Film film)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public String searchFilm(Film film)
 	{
 		FilmHome filmDAO = new FilmHome();
-		return filmDAO.findByExample(film);
+		Gson gson = new Gson();
+		return gson.toJson(filmDAO.findByExample(film));
 	}
 	
 	@POST
 	@Path("/films/add/")
-	@Consumes(MediaType.APPLICATION_XML)	
+	@Consumes(MediaType.APPLICATION_JSON)	
 	public void insertionFilm(Film film) {
 		FilmHome filmDAO = new FilmHome();
 		filmDAO.attachDirty(film);
@@ -60,7 +62,7 @@ public class WService {
 	
 	@POST
 	@Path("/films/update/")
-	@Consumes(MediaType.APPLICATION_XML)	
+	@Consumes(MediaType.APPLICATION_JSON)	
 	public void miseAJourFilm(Film film) {
 		FilmHome filmDAO = new FilmHome();
 		filmDAO.merge(film);
@@ -68,7 +70,7 @@ public class WService {
 	
 	@GET
 	@Path("/films/delete/{id}")
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	public void suppressionFilmById(@PathParam("id")  int idFilm) {
 		FilmHome filmDAO = new FilmHome();
 		Film film = filmDAO.findById(idFilm);
@@ -82,10 +84,11 @@ public class WService {
 	/*****************************************************/
 	@GET
 	@Path("/categorie")
-	@Produces(MediaType.APPLICATION_XML)
-	public List<Categorie> listCategorie() {
+	@Produces(MediaType.APPLICATION_JSON)
+	public String listCategorie() {
 		
 		CategorieHome categorieDAO = new CategorieHome();
-		return categorieDAO.getListCategorie();
+		Gson gson = new Gson();
+		return gson.toJson(categorieDAO.getListCategorie());
 	}
 }

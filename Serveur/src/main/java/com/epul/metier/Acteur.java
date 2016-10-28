@@ -13,10 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+import javax.persistence.Transient;
 
 
 /**
@@ -24,8 +21,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "acteur", catalog = "cinema")
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Acteur implements java.io.Serializable {
 	private static final long serialVersionUID = 2498857160112461587L;
 	
@@ -42,7 +37,7 @@ public class Acteur implements java.io.Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DateDeces", length = 10)
 	private Date dateDeces;
-	@XmlTransient
+	@Transient
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "acteur")
 	private Set<Personnage> personnages = new HashSet<Personnage>(0);
 
