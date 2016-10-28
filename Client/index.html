@@ -1,8 +1,10 @@
 <html>
   <head>
-    <title>Angular QuickStart</title>
+    <title>Médiathèque Films</title>
+    <base href="/"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.scss">
     <!-- 1. Load libraries -->
      <!-- Polyfill(s) for older browsers -->
@@ -12,6 +14,9 @@
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <!-- 2. Configure SystemJS -->
     <script src="systemjs.config.js"></script>
+    <!-- 3. User Scripts -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>
       System.import('app').catch(function(err){ console.error(err); });
     </script>
