@@ -52,28 +52,33 @@ public class WService {
 	
 	@POST
 	@Path("/films/add/")
-	@Consumes(MediaType.APPLICATION_JSON)	
-	public void insertionFilm(Film film) {
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Film insertionFilm(Film film) {
 		FilmHome filmDAO = new FilmHome();
 		filmDAO.attachDirty(film);
+		return film;
 	}
 	
 	@POST
 	@Path("/films/update/")
-	@Consumes(MediaType.APPLICATION_JSON)	
-	public void miseAJourFilm(Film film) {
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Film miseAJourFilm(Film film) {
 		FilmHome filmDAO = new FilmHome();
 		filmDAO.merge(film);
+		return film;
 	}
 	
 	@GET
 	@Path("/films/delete/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public void suppressionFilmById(@PathParam("id")  int idFilm) {
+	public Film suppressionFilmById(@PathParam("id")  int idFilm) {
 		FilmHome filmDAO = new FilmHome();
 		Film film = filmDAO.findById(idFilm);
 		if(film != null)
 			filmDAO.delete(film);
+		return film;
 	}
 	
 	

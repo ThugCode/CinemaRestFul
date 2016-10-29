@@ -68,43 +68,12 @@ public class FilmTest {
 	}
 	
 	@Test
-	public void testAddDuplicateEntry() {
-		
-		System.out.println("");
-		System.out.println("SERVER REQUEST : ADD DUPLICATE");
-		System.out.println("");
-		
-		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/test/films/add/");
-		ClientResponse response = webResource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, filmToTest);
-		
-		assertTrue(response.getEntity(String.class).contains("Duplicate entry"));
-	}
-	
-	@Test
 	public void testUpdate() {
 		
 		System.out.println("");
 		System.out.println("SERVER REQUEST : UPDATE");
 		System.out.println("");
 		
-		filmToTest.setTitre("Patachou");
-		
-		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/test/films/update/");
-		ClientResponse response = webResource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, filmToTest);
-		
-		System.out.println("Server response : \n"+response.getEntity(String.class));
-
-		assertTrue(response.getStatus() == 200);
-	}
-	
-	@Test
-	public void testUpdateFalse() {
-		
-		System.out.println("");
-		System.out.println("SERVER REQUEST : UPDATE FALSE");
-		System.out.println("");
-		
-		filmToTest.setNoFilm(13);
 		filmToTest.setTitre("Patachou");
 		
 		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/test/films/update/");
@@ -131,18 +100,20 @@ public class FilmTest {
 	}
 	
 	@Test
-	public void testGetFalse() {
+	public void testGetNoContent() {
 		
 		System.out.println("");
-		System.out.println("SERVER REQUEST : GET FALSE");
+		System.out.println("SERVER REQUEST : GET NO CONTENT");
 		System.out.println("");
 		
 		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/test/films/get/14");
 		ClientResponse response = webResource.type(MediaType.APPLICATION_JSON).get(ClientResponse.class);
 		
-		System.out.println("Server response : \n"+response.getEntity(String.class));
-
-		assertTrue(response.getStatus() == 200);
+		System.out.println("Server response : \n "+response);
+		
+		assertTrue(response.toString().contains("204 No Content"));
+		
+		
 	}
 	
 	@Test
@@ -152,8 +123,11 @@ public class FilmTest {
 		System.out.println("SERVER REQUEST : SEARCH");
 		System.out.println("");
 		
+		Film example= new Film();
+		example.setTitre("%way%");
+		
 		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/test/films/search/");
-		ClientResponse response = webResource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, filmToTest);
+		ClientResponse response = webResource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, example);
 		
 		System.out.println("Server response : \n"+response.getEntity(String.class));
 
