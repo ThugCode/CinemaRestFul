@@ -1,5 +1,7 @@
 package main.java.com.epul.service;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -8,10 +10,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.google.gson.Gson;
-
 import main.java.com.epul.DAO.CategorieHome;
 import main.java.com.epul.DAO.FilmHome;
+import main.java.com.epul.metier.Categorie;
 import main.java.com.epul.metier.Film;
 
 @Path("/test")
@@ -24,32 +25,29 @@ public class WService {
 	@GET
 	@Path("/films")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String listeFilms() {
+	public List<Film> listeFilms() {
 		
-		FilmHome filmDAO = new FilmHome();
-		Gson gson = new Gson();		
-		return gson.toJson(filmDAO.getListFilm());
+		FilmHome filmDAO = new FilmHome();	
+		return filmDAO.getListFilm();
 	}
 	
 	@GET
 	@Path("/films/get/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getFilmById(@PathParam("id")  int idFilm)
+	public Film getFilmById(@PathParam("id")  int idFilm)
 	{
 		FilmHome filmDAO = new FilmHome();
-		Gson gson = new Gson();
-		return gson.toJson(filmDAO.findById(idFilm));
+		return filmDAO.findById(idFilm);
 	}
 	
 	@POST
 	@Path("/films/search/")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public String searchFilm(Film film)
+	public List<Film> searchFilm(Film film)
 	{
 		FilmHome filmDAO = new FilmHome();
-		Gson gson = new Gson();
-		return gson.toJson(filmDAO.findByExample(film));
+		return filmDAO.findByExample(film);
 	}
 	
 	@POST
@@ -85,10 +83,9 @@ public class WService {
 	@GET
 	@Path("/categorie")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String listCategorie() {
+	public List<Categorie> listCategorie() {
 		
 		CategorieHome categorieDAO = new CategorieHome();
-		Gson gson = new Gson();
-		return gson.toJson(categorieDAO.getListCategorie());
+		return categorieDAO.getListCategorie();
 	}
 }

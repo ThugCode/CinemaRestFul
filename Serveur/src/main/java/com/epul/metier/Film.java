@@ -16,15 +16,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import main.java.com.epul.metier.Categorie;
-import main.java.com.epul.metier.Realisateur;
 import main.java.com.epul.util.DateFormater;
 
 /**
@@ -32,6 +29,8 @@ import main.java.com.epul.util.DateFormater;
  */
 @Entity
 @Table(name = "film", catalog = "cinema")
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Film implements java.io.Serializable {
 	private static final long serialVersionUID = -4158730546766376186L;
 	
@@ -56,7 +55,7 @@ public class Film implements java.io.Serializable {
 	private int budget;
 	@Column(name = "MontantRecette", nullable = false)
 	private int montantRecette;
-	@Transient
+	@XmlTransient
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "film", orphanRemoval = true, cascade = CascadeType.ALL)
 	private Set<Personnage> personnages = new HashSet<Personnage>(0);
 
