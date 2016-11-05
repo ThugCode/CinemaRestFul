@@ -10,20 +10,18 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import main.java.com.epul.DAO.CategorieHome;
 import main.java.com.epul.DAO.FilmHome;
-import main.java.com.epul.metier.Categorie;
 import main.java.com.epul.metier.Film;
 
-@Path("/test")
-public class WService {
+@Path("/films")
+public class WSFilm {
 	
 	
 	/*****************************************************/
 	/***************          FILM          **************/
 	/*****************************************************/
 	@GET
-	@Path("/films")
+	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Film> listeFilms() {
 		
@@ -32,7 +30,7 @@ public class WService {
 	}
 	
 	@GET
-	@Path("/films/get/{id}")
+	@Path("/get/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Film getFilmById(@PathParam("id")  int idFilm)
 	{
@@ -41,7 +39,7 @@ public class WService {
 	}
 	
 	@POST
-	@Path("/films/search/")
+	@Path("/search/")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Film> searchFilm(Film film)
@@ -51,7 +49,7 @@ public class WService {
 	}
 	
 	@POST
-	@Path("/films/add/")
+	@Path("/add/")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Film insertionFilm(Film film) {
@@ -61,7 +59,7 @@ public class WService {
 	}
 	
 	@POST
-	@Path("/films/update/")
+	@Path("/update/")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Film miseAJourFilm(Film film) {
@@ -71,7 +69,7 @@ public class WService {
 	}
 	
 	@GET
-	@Path("/films/delete/{id}")
+	@Path("/delete/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Film suppressionFilmById(@PathParam("id")  int idFilm) {
 		FilmHome filmDAO = new FilmHome();
@@ -79,18 +77,5 @@ public class WService {
 		if(film != null)
 			filmDAO.delete(film);
 		return film;
-	}
-	
-	
-	/*****************************************************/
-	/***************       CATEGORIE        **************/
-	/*****************************************************/
-	@GET
-	@Path("/categorie")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Categorie> listCategorie() {
-		
-		CategorieHome categorieDAO = new CategorieHome();
-		return categorieDAO.getListCategorie();
 	}
 }
