@@ -13,7 +13,11 @@ public class WSApplication extends Application {
 	private Set<Class<?>> empty = new HashSet<Class<?>>();
 	
 	public WSApplication() {
+		singletons.add(new WSActeur());
+		singletons.add(new WSCategorie());
 		singletons.add(new WSFilm());
+		singletons.add(new WSPersonnage());
+		singletons.add(new WSRealisateur());
 	}
 	
 	@Override
