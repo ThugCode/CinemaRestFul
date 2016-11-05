@@ -37,7 +37,7 @@ public class WService {
 	public Film getFilmById(@PathParam("id")  int idFilm)
 	{
 		FilmHome filmDAO = new FilmHome();
-		return filmDAO.findById(idFilm);
+		return (Film) filmDAO.findById(idFilm);
 	}
 	
 	@POST
@@ -75,7 +75,7 @@ public class WService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Film suppressionFilmById(@PathParam("id")  int idFilm) {
 		FilmHome filmDAO = new FilmHome();
-		Film film = filmDAO.findById(idFilm);
+		Film film = (Film) filmDAO.findById(idFilm);
 		if(film != null)
 			filmDAO.delete(film);
 		return film;

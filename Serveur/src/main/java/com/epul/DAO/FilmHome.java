@@ -3,13 +3,7 @@ package main.java.com.epul.DAO;
 
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.hibernate.LockMode;
-import org.hibernate.criterion.Example;
-
 import main.java.com.epul.metier.Film;
-import main.java.com.epul.util.HibernateUtil;
 
 /**
  * Home object for domain model class Film.
@@ -17,120 +11,17 @@ import main.java.com.epul.util.HibernateUtil;
  * @author Hibernate Tools
  */
 public class FilmHome extends AbstractHome {
-
-	private static final Log log = LogFactory.getLog(FilmHome.class);
-
+	
 	public FilmHome() {
 		super();
+		classe = "Film";
 	}
 	
-	public void persist(Film transientInstance) {
-		log.debug("persisting Film instance");
-		try {
-			session.beginTransaction();
-			session.persist(transientInstance);
-			session.getTransaction().commit();
-			log.debug("persist successful");
-		} catch (RuntimeException re) {
-			log.error("persist failed", re);
-			throw re;
-		}
-	}
-
-	public void attachDirty(Film instance) {
-		log.debug("attaching dirty Film instance");
-		try {
-			session.beginTransaction();
-			session.saveOrUpdate(instance);
-			session.getTransaction().commit();
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
-
-	public void attachClean(Film instance) {
-		log.debug("attaching clean Film instance");
-		try {
-			session.beginTransaction();
-			session.lock(instance, LockMode.NONE);
-			session.getTransaction().commit();
-			log.debug("attach successful");
-		} catch (RuntimeException re) {
-			log.error("attach failed", re);
-			throw re;
-		}
-	}
-
 	public List<Film> getListFilm() {
-		session.beginTransaction();
+		getSession().beginTransaction();
 		List<Film> list = session.createCriteria(Film.class).list();
-		session.getTransaction().commit();
+		getSession().getTransaction().commit();
+		getSession().close();
 		return list;
-	}
-	
-	public void delete(Film instance) {
-		log.debug("deleting Film instance");
-		try {
-			if(!session.isOpen())
-				session = HibernateUtil.getSessionFactory().openSession();
-			
-			session.beginTransaction();
-			session.delete(instance);
-			session.flush();
-			session.clear();
-			session.getTransaction().commit();
-			log.debug("delete successful");
-		} catch (RuntimeException re) {
-			log.error("delete failed", re);
-			throw re;
-		}
-	}
-
-	public Film merge(Film detachedInstance) {
-		log.debug("merging Film instance");
-		try {
-			session.beginTransaction();
-			Film result = (Film) session.merge(detachedInstance);
-			session.getTransaction().commit();
-			log.debug("merge successful");
-			return result;
-		} catch (RuntimeException re) {
-			log.error("merge failed", re);
-			throw re;
-		}
-	}
-
-	public Film findById(int id) {
-		log.debug("getting Film instance with id: " + id);
-		try {
-			session.beginTransaction();
-			Film instance = (Film) session.get("main.java.com.epul.metier.Film", id);
-			session.getTransaction().commit();
-			if (instance == null) {
-				log.debug("get successful, no instance found");
-			} else {
-				log.debug("get successful, instance found");
-			}
-			return instance;
-		} catch (RuntimeException re) {
-			log.error("get failed", re);
-			throw re;
-		}
-	}
-
-	public List findByExample(Film instance) {
-		log.debug("finding Film instance by example");
-		try {
-			session.beginTransaction();
-			List results = session.createCriteria("main.java.com.epul.metier.Film").add(Example.create(instance)).list();
-			session.getTransaction().commit();
-			log.debug("find by example successful, result size: " + results.size());
-			return results;
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
-		}
 	}
 }
