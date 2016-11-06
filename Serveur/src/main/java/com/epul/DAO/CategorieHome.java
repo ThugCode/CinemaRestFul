@@ -23,4 +23,24 @@ public class CategorieHome extends AbstractHome {
 		session.getTransaction().commit();
 		return list;
 	}
+	
+	public Object findById(String id) {
+		log.debug("Getting "+classe+" instance with id: " + id);
+		try {
+			getSession().beginTransaction();
+			Object instance = session.get("main.java.com.epul.metier."+classe, id);
+			getSession().getTransaction().commit();
+			if (instance == null) {
+				log.debug("Get successful, no instance found");
+			} else {
+				log.debug("Get successful, instance found");
+			}
+			return instance;
+		} catch (RuntimeException re) {
+			log.error("Get failed", re);
+			throw re;
+		} finally {
+			getSession().close();
+		}
+	}
 }

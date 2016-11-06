@@ -2,8 +2,6 @@ package main.test.com.epul;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.Date;
-
 import javax.ws.rs.core.MediaType;
 
 import org.junit.Before;
@@ -16,26 +14,19 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 import main.java.com.epul.metier.Categorie;
-import main.java.com.epul.metier.Film;
-import main.java.com.epul.metier.Realisateur;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class FilmTest {
+public class CategorieTest {
 
-	private Film filmToTest;
+	private Categorie categorieToTest;
 	private Client client;
 	
 	@Before
 	public void setUp() throws Exception {
 		
-		filmToTest = new Film(12, 
-				new Categorie("PO", "Policier"),
-				new Realisateur(2, "Chabrol", "Claude"),
-				"La pistache",
-				110,
-				new Date(),
-				1000000,
-				1000000);
+		categorieToTest = new Categorie("PN", 
+				"TestPn"
+			);
 		
 		client = Client.create();
 	}
@@ -47,7 +38,7 @@ public class FilmTest {
 		System.out.println("SERVER REQUEST : LIST");
 		System.out.println("");
 		
-		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/films");
+		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/categories");
 		ClientResponse response = webResource.type(MediaType.APPLICATION_JSON).get(ClientResponse.class);
 
 		System.out.println("Server response : \n"+response.getEntity(String.class));
@@ -62,8 +53,8 @@ public class FilmTest {
 		System.out.println("SERVER REQUEST : ADD");
 		System.out.println("");
 		
-		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/films/add/");
-		ClientResponse response = webResource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, filmToTest);
+		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/categories/add/");
+		ClientResponse response = webResource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, categorieToTest);
 		
 		System.out.println("Server response : \n"+response.getEntity(String.class));
 		
@@ -77,10 +68,10 @@ public class FilmTest {
 		System.out.println("SERVER REQUEST : UPDATE");
 		System.out.println("");
 		
-		filmToTest.setTitre("Patachou");
+		categorieToTest.setLibelleCat("TestPnUpdate");
 		
-		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/films/update/");
-		ClientResponse response = webResource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, filmToTest);
+		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/categories/update/");
+		ClientResponse response = webResource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, categorieToTest);
 		
 		System.out.println("Server response : \n"+response.getEntity(String.class));
 
@@ -94,7 +85,7 @@ public class FilmTest {
 		System.out.println("SERVER REQUEST : GET");
 		System.out.println("");
 		
-		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/films/get/"+filmToTest.getNoFilm());
+		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/categories/get/"+categorieToTest.getCodeCat());
 		ClientResponse response = webResource.type(MediaType.APPLICATION_JSON).get(ClientResponse.class);
 		
 		System.out.println("Server response : \n"+response.getEntity(String.class));
@@ -109,7 +100,7 @@ public class FilmTest {
 		System.out.println("SERVER REQUEST : GET NO CONTENT");
 		System.out.println("");
 		
-		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/films/get/14");
+		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/categories/get/14");
 		ClientResponse response = webResource.type(MediaType.APPLICATION_JSON).get(ClientResponse.class);
 		
 		System.out.println("Server response : \n "+response);
@@ -126,10 +117,10 @@ public class FilmTest {
 		System.out.println("SERVER REQUEST : SEARCH");
 		System.out.println("");
 		
-		Film example= new Film();
-		example.setTitre("%way%");
+		Categorie example= new Categorie();
+		example.setLibelleCat("%olici%");
 		
-		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/films/search/");
+		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/categories/search/");
 		ClientResponse response = webResource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, example);
 		
 		System.out.println("Server response : \n"+response.getEntity(String.class));
@@ -140,11 +131,16 @@ public class FilmTest {
 	@Test
 	public void test7Delete() {
 		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		System.out.println("");
 		System.out.println("SERVER REQUEST : DELETE");
 		System.out.println("");
 		
-		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/films/delete/"+filmToTest.getNoFilm());
+		WebResource webResource = client.resource("http://localhost:8080/CinemaRestFulServeur/categories/delete/"+categorieToTest.getCodeCat());
 		ClientResponse response = webResource.type(MediaType.APPLICATION_JSON).get(ClientResponse.class);
 		
 		System.out.println("Server response : \n"+response.getEntity(String.class));

@@ -32,7 +32,7 @@ public class WSCategorie {
 	@GET
 	@Path("/get/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Categorie getCategorieById(@PathParam("id")  int idCategorie)
+	public Categorie getCategorieById(@PathParam("id")  String idCategorie)
 	{
 		CategorieHome categorieDAO = new CategorieHome();
 		return (Categorie) categorieDAO.findById(idCategorie);
@@ -71,7 +71,7 @@ public class WSCategorie {
 	@GET
 	@Path("/delete/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Categorie suppressionCategorieById(@PathParam("id")  int idCategorie) {
+	public Categorie suppressionCategorieById(@PathParam("id")  String idCategorie) {
 		CategorieHome categorieDAO = new CategorieHome();
 		Categorie categorie = (Categorie) categorieDAO.findById(idCategorie);
 		if(categorie != null)
