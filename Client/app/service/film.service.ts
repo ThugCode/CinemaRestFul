@@ -1,16 +1,19 @@
-import { Observable } from 'rxjs/Rx';
-import 'rxjs/add/operator/map'
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 import { Http } from '@angular/http';
 import { Film } from '../metier/film';
+import { MainService } from './main.service';
 
 @Injectable()
-export class FilmService {
-    private _filmUrl = "http://localhost:8080/CinemaRestFulServeur/test/films";
+export class FilmService extends MainService<Film> {
 
-    constructor(private http: Http) { }
+
+    constructor(http: Http) {
+        super(http);
+        this.baseUrl = this.baseUrl + "films";
+    }
 
     getFilms(): Observable<Film[]> {
-        return this.http.get(this._filmUrl).map(response => <Film[]> response.json());
+        return this.getList(this.baseUrl);
     }
 }
