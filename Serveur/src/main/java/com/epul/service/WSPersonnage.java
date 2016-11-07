@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 
 import main.java.com.epul.DAO.PersonnageHome;
 import main.java.com.epul.metier.Personnage;
+import main.java.com.epul.metier.PersonnageId;
 
 @Path("/personnages")
 public class WSPersonnage {
@@ -30,12 +31,13 @@ public class WSPersonnage {
 	}
 	
 	@GET
-	@Path("/get/{id}")
+	@Path("/get/{idFilm}/{idActeur}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Personnage getPersonnageById(@PathParam("id")  int idPersonnage)
+	public Personnage getPersonnageById(@PathParam("idFilm")  int idFilm, @PathParam("idActeur") int idActeur)
 	{
+		PersonnageId id = new PersonnageId(idFilm, idActeur);
 		PersonnageHome personnageDAO = new PersonnageHome();
-		return (Personnage) personnageDAO.findById(idPersonnage);
+		return (Personnage) personnageDAO.findById(id);
 	}
 	
 	@POST
@@ -69,11 +71,13 @@ public class WSPersonnage {
 	}
 	
 	@GET
-	@Path("/delete/{id}")
+	@Path("/delete/{idFilm}/{idActeur}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Personnage suppressionPersonnageById(@PathParam("id")  int idPersonnage) {
+	public Personnage suppressionPersonnageById(@PathParam("idFilm")  int idFilm, @PathParam("idActeur") int idActeur) {
+		
+		PersonnageId id = new PersonnageId(idFilm, idActeur);
 		PersonnageHome personnageDAO = new PersonnageHome();
-		Personnage personnage = (Personnage) personnageDAO.findById(idPersonnage);
+		Personnage personnage = (Personnage) personnageDAO.findById(id);
 		if(personnage != null)
 			personnageDAO.delete(personnage);
 		return personnage;

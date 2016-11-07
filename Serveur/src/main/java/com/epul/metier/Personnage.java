@@ -30,10 +30,10 @@ public class Personnage implements java.io.Serializable {
 		@AttributeOverride(name = "noAct", column = @Column(name = "NoAct", nullable = false)) 
 	})
 	private PersonnageId id;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "NoAct", nullable = false, insertable = false, updatable = false)
 	private Acteur acteur;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "NoFilm", nullable = false, insertable = false, updatable = false)
 	private Film film;
 	@Column(name = "NomPers", nullable = false, length = 30)
