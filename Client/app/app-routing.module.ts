@@ -1,8 +1,8 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AccueilComponent }   from './component/accueil.component';
-import { FilmsComponent } from './component/films.component';
+import { AccueilComponent }   from './accueil/accueil.component';
+import { FilmsComponent } from './film/films.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },

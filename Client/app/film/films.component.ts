@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Film } from '../metier/film';
-import { FilmService } from '../service/film.service';
+import { Film } from './film';
+import { FilmService } from './film.service';
 
 @Component({
     selector: 'films',

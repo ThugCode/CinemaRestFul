@@ -1,5 +1,5 @@
-import { Categorie } from './categorie'
-import { Realisateur } from './realisateur'
+import { Categorie } from '../categorie/categorie'
+import { Realisateur } from '../realisateur/realisateur'
 
 export class Film {
   noFilm: number;
