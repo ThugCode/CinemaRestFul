@@ -5,7 +5,7 @@ import { FilmService } from './film.service';
 
 @Component({
     selector: 'films',
-    templateUrl: 'app/views/films.component.html'
+    templateUrl: 'app/film/films.component.html'
 })
 export class FilmsComponent implements OnInit {
     films: Film[];
