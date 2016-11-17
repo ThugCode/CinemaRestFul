@@ -1,0 +1,19 @@
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Date Naissance</th>
+            <th>Date Décès</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let acteur of acteurs">
+            <td>{{acteur.nomAct}}</td>
+            <td>{{acteur.prenAct}}</td>
+            <td>{{acteur.dateNaiss}}</td>
+            <td>{{acteur.dateDeces}}</td>
+        </tr>
+    </tbody>
+</table>

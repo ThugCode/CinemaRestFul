@@ -1,0 +1,17 @@
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Personnage</th>
+            <th>Film</th>
+            <th>Acteur</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let personnage of personnages">
+            <td>{{personnage.nomPers}}</td>
+            <td>{{personnage.film.titre}}</td>
+            <td>{{personnage.acteur.prenAct}} {{personnage.acteur.nomAct}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,15 @@
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Libelle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let categorie of categories">
+            <td>{{categorie.codeCat}}</td>
+            <td>{{categorie.libelleCat}}</td>
+        </tr>
+    </tbody>
+</table>

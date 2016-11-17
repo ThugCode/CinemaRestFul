@@ -13,6 +13,6 @@ export class CategorieService extends MainService<Categorie> {
     }
 
     getCategories(): Observable<Categorie[]> {
-        return this.getList(this.baseUrl);
+        return this.http.get(this.baseUrl).map(response => <Categorie[]> response.json().categorie);
     }
 }

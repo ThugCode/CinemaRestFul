@@ -1,0 +1,15 @@
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let realisateur of realisateurs">
+            <td>{{realisateur.nomRea}}</td>
+            <td>{{realisateur.prenRea}}</td>
+        </tr>
+    </tbody>
+</table>

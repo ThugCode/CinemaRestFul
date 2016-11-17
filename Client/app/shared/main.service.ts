@@ -8,11 +8,7 @@ export class MainService<T> {
 
     protected baseUrl = "http://localhost:8080/CinemaRestFulServeur/";
 
-    constructor(private http: Http) { }
-
-    getList(url): Observable<T[]> {
-        return this.http.get(url).map(response => <T[]> response.json());
-    }
+    constructor(protected http: Http) { }
 
     getItem(url): Observable<T> {
         return this.http.get(url).map(response => <T> response.json());

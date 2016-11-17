@@ -13,6 +13,6 @@ export class RealisateurService extends MainService<Realisateur> {
     }
 
     getRealisateurs(): Observable<Realisateur[]> {
-        return this.getList(this.baseUrl);
+        return this.http.get(this.baseUrl).map(response => <Realisateur[]> response.json().realisateur);
     }
 }

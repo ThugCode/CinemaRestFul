@@ -1,5 +1,18 @@
-<div class="list-group">
-	<a class="list-group-item" *ngFor="let film of films">
-		<span class="badge">{{film.noFilm}}</span> {{film.titre}}
-	</a>
-</div>
+<table class="table table-hover table-bordered">
+	<thead>
+		<tr>
+			<th>Nom</th>
+			<th>Catégorie</th>
+			<th>Réalisateur</th>
+			<th>Date Sortie</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let film of films">
+			<td>{{film.titre}}</td>
+			<td>{{film.categorie.libelleCat}}</td>
+			<td>{{film.realisateur.nomRea}}</td>
+			<td>{{film.dateSortie}}</td>
+		</tr>
+	</tbody>
+</table>

@@ -13,6 +13,6 @@ export class PersonnageService extends MainService<Personnage> {
     }
 
     getPersonnages(): Observable<Personnage[]> {
-        return this.getList(this.baseUrl);
+        return this.http.get(this.baseUrl).map(response => <Personnage[]> response.json().personnage);
     }
 }
