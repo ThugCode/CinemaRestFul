@@ -10,19 +10,19 @@ export class MainService<T> {
 
     constructor(protected http: Http) { }
 
-    getItem(url): Observable<T> {
+    protected getItem(url): Observable<T> {
         return this.http.get(url).map(response => <T> response.json());
     }
 
-    addItem(url, body): Observable<T> {
+    protected addItem(url, body): Observable<T> {
         return this.http.post(url, body).map(response => <T> response.json());
     }
 
-    updateItem(url, body): Observable<T> {
+    protected updateItem(url, body): Observable<T> {
         return this.http.post(url, body).map(response => <T> response.json());
     }
 
-    deleteItem(url, body): Observable<T> {
+    protected deleteItem(url, body): Observable<T> {
         return this.http.post(url, body).map(response => <T> response.json());
     }
 }

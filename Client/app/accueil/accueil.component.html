@@ -1,1 +1,7 @@
-<h1>Bienvenue !</h1>
+<h1 class="text-center">Mediathèque de films</h1>
+<div class="col-sm-offset-2 col-sm-8">
+    <input list="films" type="text" name="search" id="inputSearch" placeholder="Recherche..." class="form-control">
+    <datalist id="films" name="filmSelected" [(ngModel)]="filmSelected" (ngModelChange)="filmDetail()" ngDefaultControl>
+        <option *ngFor="let film of films" value="{{film.titre}}">
+    </datalist>
+</div>

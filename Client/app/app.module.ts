@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ActeursComponent } from './acteur/acteurs.component';
 import { CategoriesComponent } from './categorie/categories.component';
 import { FilmsComponent } from './film/films.component';
+import { FilmDetailComponent } from './film/film-detail.component';
 import { PersonnagesComponent } from './personnage/personnages.component';
 import { RealisateursComponent } from './realisateur/realisateurs.component';
 
@@ -23,7 +25,8 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,
@@ -31,6 +34,7 @@ import { AppRoutingModule } from './app-routing.module';
     ActeursComponent,
     CategoriesComponent,
     FilmsComponent,
+    FilmDetailComponent,
     PersonnagesComponent,
     RealisateursComponent
   ],
