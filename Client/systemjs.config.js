@@ -24,6 +24,8 @@
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
+      'toastr':                    'npm:toastr/build/toastr.min.js',
+      'jquery':                    'npm:jquery/dist/jquery.min.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

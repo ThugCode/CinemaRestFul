@@ -20,4 +20,11 @@ export class FilmService extends MainService<Film> {
         var url = this.baseUrl + "/get/" + id;
         return this.getItem(url);
     }
+
+    updateFilm(film: Film) : Observable<Film> {
+        var url = this.baseUrl + "/update/";
+        var body = JSON.stringify(film);
+
+        return this.updateItem(url,body);
+    }
 }

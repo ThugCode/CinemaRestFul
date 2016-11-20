@@ -9,7 +9,7 @@
 	</thead>
 	<tbody>
 		<tr *ngFor="let film of films">
-			<td>{{film.titre}}</td>
+			<td><a [routerLink]="['detail',film.noFilm]">{{film.titre}}</a></td>
 			<td>{{film.categorie.libelleCat}}</td>
 			<td>{{film.realisateur.nomRea}}</td>
 			<td>{{film.dateSortie}}</td>

@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'acteurs', component: ActeursComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'films', component: FilmsComponent },
-  { path: 'films/detail', component: FilmDetailComponent },
+  { path: 'films/detail/:id', component: FilmDetailComponent },
   { path: 'personnages', component: PersonnagesComponent },
   { path: 'realisateurs', component: RealisateursComponent }
 ];
