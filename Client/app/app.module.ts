@@ -9,6 +9,8 @@ import { ActeursComponent } from './acteur/acteurs.component';
 import { CategoriesComponent } from './categorie/categories.component';
 import { FilmsComponent } from './film/films.component';
 import { FilmDetailComponent } from './film/film-detail.component';
+import { FilmAddComponent } from './film/film-add.component';
+import { FilmFormComponent } from './film/film-form.component';
 import { PersonnagesComponent } from './personnage/personnages.component';
 import { RealisateursComponent } from './realisateur/realisateurs.component';
 
@@ -35,6 +37,8 @@ import { AppRoutingModule } from './app-routing.module';
     CategoriesComponent,
     FilmsComponent,
     FilmDetailComponent,
+    FilmAddComponent,
+    FilmFormComponent,
     PersonnagesComponent,
     RealisateursComponent
   ],
