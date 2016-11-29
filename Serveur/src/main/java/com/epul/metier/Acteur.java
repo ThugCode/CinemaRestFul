@@ -17,6 +17,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import main.java.com.epul.util.DateFormater;
 
 
 /**
@@ -38,9 +41,11 @@ public class Acteur implements java.io.Serializable {
 	private String prenAct;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DateNaiss", length = 10)
+	@XmlJavaTypeAdapter(DateFormater.class)
 	private Date dateNaiss;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DateDeces", length = 10)
+	@XmlJavaTypeAdapter(DateFormater.class)
 	private Date dateDeces;
 	@XmlTransient
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "acteur")
