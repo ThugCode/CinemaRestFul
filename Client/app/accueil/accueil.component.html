@@ -1,7 +1,21 @@
-<h1 class="text-center">Mediathèque de films</h1>
+<h1 class="text-center">Mediathèque de Cap'Tech</h1>
+<br/>
 <div class="col-sm-offset-2 col-sm-8">
+    <h3>Cette année, nouveauté !</h3>
+    <p>Nous acceuillons non seulement dans notre établissement mais nous vous permettons de consulter la liste de tous les films sur notre site internet.</p>
     <input list="films" type="text" name="search" id="inputSearch" placeholder="Recherche..." class="form-control">
     <datalist id="films" name="filmSelected" [(ngModel)]="filmSelected" (ngModelChange)="filmDetail()" ngDefaultControl>
         <option *ngFor="let film of films" value="{{film.titre}}">
     </datalist>
+    <br/>
+    <div class="row">
+    <img id="logo" class="col-sm-offset-4 col-sm-4 img img-responsive" src="app/images/logo.png" />
+    </div>
+    <br/>
+    <p>Loïc, Léo et leur personnel vous accueillent à la médiathèque de Cap'Tech au climat calme, reposant et convivial.
+    Vous serez reçu dans un établissement privilégiant une ambiance chaleureuse et familiale.
+    La médiathèque est situé au centre du Cap d'Agde, proche du port. 
+    Afin de vous faire passer un agréable moment, nous vous proposons un large choix de films adaptés aux envies de chacun.
+    </p>
+    <br/>
 </div>
