@@ -36,6 +36,7 @@ export class FilmFormComponent implements OnInit {
 
     onSubmit() {
         this.film.noFilm = Math.floor(Math.random() * 1000) + Math.floor(Math.random() * 1000);
+        console.log(this.film);
         this.filmService.addFilm(this.film)
             .subscribe(film => toastr.success('Ajout du film ' + film.titre + ' réussie'));
     }

@@ -54,6 +54,7 @@ public class WSFilm {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Film insertionFilm(Film film) {
 		FilmHome filmDAO = new FilmHome();
+		System.out.println(film);
 		filmDAO.attachDirty(film);
 		return film;
 	}
