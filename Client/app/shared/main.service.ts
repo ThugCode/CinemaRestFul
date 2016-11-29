@@ -24,7 +24,7 @@ export class MainService<T> {
         return this.http.post(url, body, this.options).map(response => <T> response.json());
     }
 
-    protected deleteItem(url, body): Observable<T> {
-        return this.http.post(url, body, this.options).map(response => <T> response.json());
+    protected deleteItem(url): Observable<T> {
+        return this.http.get(url).map(response => <T> response.json());
     }
 }

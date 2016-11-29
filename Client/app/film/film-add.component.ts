@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Location } from '@angular/common';
-
 
 @Component({
     selector: 'film-add',
@@ -8,12 +6,5 @@ import { Location } from '@angular/common';
 })
 export class FilmAddComponent {
 
-    constructor(
-        private location: Location
-    ) { }
-
-
-    goBack() {
-        this.location.back();
-    }
+    constructor() { }
 }

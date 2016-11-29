@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
@@ -31,8 +31,8 @@ export class FilmDetailComponent implements OnInit {
         this.location.back();
     }
 
-    save() {
+    save(): void {
         this.filmService.updateFilm(this.film)
-        .subscribe(film => { this.film = film; toastr.success('Modification réussie');});
+            .subscribe(film => { this.film = film; toastr.success('Modification réussie'); });
     }
 }

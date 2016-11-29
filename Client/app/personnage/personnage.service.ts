@@ -15,4 +15,28 @@ export class PersonnageService extends MainService<Personnage> {
     getPersonnages(): Observable<Personnage[]> {
         return this.http.get(this.baseUrl).map(response => <Personnage[]> response.json().personnage);
     }
+
+    getPersonnage(id: number): Observable<Personnage> {
+        var url = this.baseUrl + "/get/" + id;
+        return this.getItem(url);
+    }
+
+    updatePersonnage(personnage: Personnage): Observable<Personnage> {
+        var url = this.baseUrl + "/update/";
+        var body = JSON.stringify(personnage);
+
+        return this.updateItem(url, body);
+    }
+
+    addPersonnage(personnage: Personnage): Observable<Personnage> {
+        var url = this.baseUrl + "/add/";
+        var body = JSON.stringify(personnage);
+
+        return this.addItem(url, body);
+    }
+
+    deletePersonnage(id: number): Observable<Personnage> {
+        var url = this.baseUrl + "/delete/" + id;
+        return this.deleteItem(url);
+    }
 }

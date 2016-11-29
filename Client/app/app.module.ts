@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ActeursComponent } from './acteur/acteurs.component';
+import { ActeurDetailComponent } from './acteur/acteur-detail.component';
+import { ActeurAddComponent } from './acteur/acteur-add.component';
+import { ActeurFormComponent } from './acteur/acteur-form.component';
 import { CategoriesComponent } from './categorie/categories.component';
 import { FilmsComponent } from './film/films.component';
 import { FilmDetailComponent } from './film/film-detail.component';
@@ -34,6 +37,9 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     AccueilComponent,
     ActeursComponent,
+    ActeurDetailComponent,
+    ActeurAddComponent,
+    ActeurFormComponent,
     CategoriesComponent,
     FilmsComponent,
     FilmDetailComponent,

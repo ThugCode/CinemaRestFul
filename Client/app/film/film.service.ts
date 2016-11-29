@@ -34,4 +34,9 @@ export class FilmService extends MainService<Film> {
 
         return this.addItem(url,body);
     }
+
+    deleteFilm(id: number): Observable<Film> {
+        var url = this.baseUrl + "/delete/" + id;
+        return this.deleteItem(url);
+    }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 import { FilmService } from './film.service';
 import { CategorieService } from '../categorie/categorie.service';
@@ -16,14 +17,14 @@ import * as toastr from 'toastr';
 })
 export class FilmFormComponent implements OnInit {
     film: Film = new Film();
-    submitted: boolean = false;
     categories: Categorie[];
     realisateurs: Realisateur[];
 
     constructor(
         private filmService: FilmService,
         private categorieService: CategorieService,
-        private realisateurService: RealisateurService
+        private realisateurService: RealisateurService,
+        private location: Location
     ) { }
 
     ngOnInit() {
@@ -36,8 +37,11 @@ export class FilmFormComponent implements OnInit {
 
     onSubmit() {
         this.film.noFilm = Math.floor(Math.random() * 1000) + Math.floor(Math.random() * 1000);
-        console.log(this.film);
         this.filmService.addFilm(this.film)
-            .subscribe(film => toastr.success('Ajout du film ' + film.titre + ' réussie'));
+            .subscribe(film => {toastr.success("Ajout du film " + film.titre + " réussie"); this.location.back()});
+    }
+
+    goBack() {
+        this.location.back();
     }
 }
