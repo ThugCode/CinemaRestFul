@@ -16,8 +16,8 @@ export class CategorieService extends MainService<Categorie> {
         return this.http.get(this.baseUrl).map(response => <Categorie[]> response.json().categorie);
     }
 
-    getCategorie(id: number): Observable<Categorie> {
-        var url = this.baseUrl + "/get/" + id;
+    getCategorie(code: string): Observable<Categorie> {
+        var url = this.baseUrl + "/get/" + code;
         return this.getItem(url);
     }
 
@@ -35,8 +35,8 @@ export class CategorieService extends MainService<Categorie> {
         return this.addItem(url, body);
     }
 
-    deleteCategorie(id: number): Observable<Categorie> {
-        var url = this.baseUrl + "/delete/" + id;
+    deleteCategorie(code: string): Observable<Categorie> {
+        var url = this.baseUrl + "/delete/" + code;
         return this.deleteItem(url);
     }
 }

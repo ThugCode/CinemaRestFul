@@ -1,0 +1,9 @@
+<div *ngIf="categorie">
+    <h2>{{categorie.codeCat}} details!</h2>
+    <div class="form-group">
+        <label>Libellé </label>
+        <input type="text" [(ngModel)]="categorie.libelleCat" placeholder="Libelle" />
+    </div>
+    <button (click)="goBack()">Retour</button>
+    <button (click)="save()">Sauvegarder</button>
+</div>

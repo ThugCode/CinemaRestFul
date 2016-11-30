@@ -22,7 +22,7 @@ export class ActeurFormComponent implements OnInit {
     ngOnInit() { }
 
     onSubmit() {
-        //this.acteur.noAct = Math.floor(Math.random() * 1000) + Math.floor(Math.random() * 1000);
+        this.acteur.noAct = Math.floor(Math.random() * 1000) + Math.floor(Math.random() * 1000);
         this.acteurService.addActeur(this.acteur)
         .subscribe(acteur => {toastr.success("Acteur " + acteur.nomAct + " " + acteur.prenAct + " ajouté"); this.location.back()});
     }

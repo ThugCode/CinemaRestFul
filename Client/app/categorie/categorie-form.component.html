@@ -1,0 +1,17 @@
+<form (ngSubmit)="onSubmit()" #categorieForm="ngForm" role="form">
+    <legend>Nouvelle categorie</legend>
+
+    <div class="form-group">
+        <label for="code">Code</label>
+        <input type="text" maxlength="2" class="form-control" id="code" [(ngModel)]="categorie.codeCat" name="codeCat" required>
+    </div>
+
+    <div class="form-group">
+        <label for="libelle">Libellé</label>
+        <input type="text" class="form-control" id="libelle" [(ngModel)]="categorie.libelleCat" name="libelleCat" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!categorieForm.form.valid">Enregistrer</button>
+    <button type="button" class="btn btn-danger" (click)="goBack()">Annuler</button>
+    
+</form>

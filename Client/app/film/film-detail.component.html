@@ -1,9 +1,9 @@
 <div *ngIf="film">
   <h2>{{film.titre}} details!</h2>
-  <div>
+  <div class="form-group">
     <label>Titre </label>
     <input type="text" [(ngModel)]="film.titre" placeholder="Titre" />
-   </div>
+  </div>
   <button (click)="goBack()">Retour</button>
   <button (click)="save()">Sauvegarder</button>
 </div>

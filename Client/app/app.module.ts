@@ -10,6 +10,9 @@ import { ActeurDetailComponent } from './acteur/acteur-detail.component';
 import { ActeurAddComponent } from './acteur/acteur-add.component';
 import { ActeurFormComponent } from './acteur/acteur-form.component';
 import { CategoriesComponent } from './categorie/categories.component';
+import { CategorieDetailComponent } from './categorie/categorie-detail.component';
+import { CategorieAddComponent } from './categorie/categorie-add.component';
+import { CategorieFormComponent } from './categorie/categorie-form.component';
 import { FilmsComponent } from './film/films.component';
 import { FilmDetailComponent } from './film/film-detail.component';
 import { FilmAddComponent } from './film/film-add.component';
@@ -41,6 +44,9 @@ import { AppRoutingModule } from './app-routing.module';
     ActeurAddComponent,
     ActeurFormComponent,
     CategoriesComponent,
+    CategorieDetailComponent,
+    CategorieAddComponent,
+    CategorieFormComponent,
     FilmsComponent,
     FilmDetailComponent,
     FilmAddComponent,
