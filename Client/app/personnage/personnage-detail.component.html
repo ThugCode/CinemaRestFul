@@ -1,0 +1,10 @@
+<div *ngIf="personnage">
+    <h2>{{personnage.nomPers}} details!</h2>
+    <div class="form-group">
+        <label>Titre </label>
+        <input type="text" [(ngModel)]="personnage.nomPers" placeholder="Nom Personnage" />
+    </div>
+
+    <button (click)="goBack()">Retour</button>
+    <button (click)="save()">Sauvegarder</button>
+</div>

@@ -18,6 +18,9 @@ import { FilmDetailComponent } from './film/film-detail.component';
 import { FilmAddComponent } from './film/film-add.component';
 import { FilmFormComponent } from './film/film-form.component';
 import { PersonnagesComponent } from './personnage/personnages.component';
+import { PersonnageDetailComponent } from './personnage/personnage-detail.component';
+import { PersonnageAddComponent } from './personnage/personnage-add.component';
+import { PersonnageFormComponent } from './personnage/personnage-form.component';
 import { RealisateursComponent } from './realisateur/realisateurs.component';
 
 import { MainService } from './shared/main.service';
@@ -52,6 +55,9 @@ import { AppRoutingModule } from './app-routing.module';
     FilmAddComponent,
     FilmFormComponent,
     PersonnagesComponent,
+    PersonnageDetailComponent,
+    PersonnageAddComponent,
+    PersonnageFormComponent,
     RealisateursComponent
   ],
   providers: [

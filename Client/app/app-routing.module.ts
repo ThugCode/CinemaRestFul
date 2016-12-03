@@ -12,6 +12,8 @@ import { FilmsComponent } from './film/films.component';
 import { FilmDetailComponent } from './film/film-detail.component';
 import { FilmAddComponent } from './film/film-add.component';
 import { PersonnagesComponent } from './personnage/personnages.component';
+import { PersonnageDetailComponent } from './personnage/personnage-detail.component';
+import { PersonnageAddComponent } from './personnage/personnage-add.component';
 import { RealisateursComponent } from './realisateur/realisateurs.component';
 
 const routes: Routes = [
@@ -25,8 +27,10 @@ const routes: Routes = [
   { path: 'categories/add', component: CategorieAddComponent },
   { path: 'films', component: FilmsComponent },
   { path: 'films/detail/:id', component: FilmDetailComponent },
-  { path: 'films/add', component: FilmAddComponent},
+  { path: 'films/add', component: FilmAddComponent },
   { path: 'personnages', component: PersonnagesComponent },
+  { path: 'personnages/detail/:idFilm/:idAct', component: PersonnageDetailComponent },
+  { path: 'personnages/add', component: PersonnageAddComponent },
   { path: 'realisateurs', component: RealisateursComponent }
 ];
 
