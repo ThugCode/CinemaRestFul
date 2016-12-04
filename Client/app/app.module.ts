@@ -22,6 +22,9 @@ import { PersonnageDetailComponent } from './personnage/personnage-detail.compon
 import { PersonnageAddComponent } from './personnage/personnage-add.component';
 import { PersonnageFormComponent } from './personnage/personnage-form.component';
 import { RealisateursComponent } from './realisateur/realisateurs.component';
+import { RealisateurDetailComponent } from './realisateur/realisateur-detail.component';
+import { RealisateurAddComponent } from './realisateur/realisateur-add.component';
+import { RealisateurFormComponent } from './realisateur/realisateur-form.component';
 
 import { MainService } from './shared/main.service';
 import { ActeurService } from './acteur/acteur.service';
@@ -58,7 +61,10 @@ import { AppRoutingModule } from './app-routing.module';
     PersonnageDetailComponent,
     PersonnageAddComponent,
     PersonnageFormComponent,
-    RealisateursComponent
+    RealisateursComponent,
+    RealisateurDetailComponent,
+    RealisateurAddComponent,
+    RealisateurFormComponent
   ],
   providers: [
     MainService,

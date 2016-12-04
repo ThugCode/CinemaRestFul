@@ -17,7 +17,7 @@ export class RealisateurService extends MainService<Realisateur> {
     }
 
     getRealisateur(id: number): Observable<Realisateur> {
-        var url = this.baseUrl + "/get" + id;
+        var url = this.baseUrl + "/get/" + id;
         return this.getItem(url);
     }
 

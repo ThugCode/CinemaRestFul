@@ -5,6 +5,5 @@ import { Component } from '@angular/core';
     template: '<film-form></film-form>'
 })
 export class FilmAddComponent {
-
     constructor() { }
 }

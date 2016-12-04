@@ -15,6 +15,8 @@ import { PersonnagesComponent } from './personnage/personnages.component';
 import { PersonnageDetailComponent } from './personnage/personnage-detail.component';
 import { PersonnageAddComponent } from './personnage/personnage-add.component';
 import { RealisateursComponent } from './realisateur/realisateurs.component';
+import { RealisateurDetailComponent } from './realisateur/realisateur-detail.component';
+import { RealisateurAddComponent } from './realisateur/realisateur-add.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
@@ -31,7 +33,9 @@ const routes: Routes = [
   { path: 'personnages', component: PersonnagesComponent },
   { path: 'personnages/detail/:idFilm/:idAct', component: PersonnageDetailComponent },
   { path: 'personnages/add', component: PersonnageAddComponent },
-  { path: 'realisateurs', component: RealisateursComponent }
+  { path: 'realisateurs', component: RealisateursComponent },
+  { path: 'realisateurs/detail/:id', component: RealisateurDetailComponent },
+  { path: 'realisateurs/add', component: RealisateurAddComponent },
 ];
 
 @NgModule({
