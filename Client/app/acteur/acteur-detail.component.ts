@@ -33,6 +33,10 @@ export class ActeurDetailComponent implements OnInit {
 
     save(): void {
         this.acteurService.updateActeur(this.acteur)
-            .subscribe(acteur => { this.acteur = acteur; toastr.success("Modification réussie"); });
+            .subscribe(acteur => {
+                this.acteur = acteur;
+                toastr.success("Modification réussie");
+                this.location.back();
+            });
     }
 }

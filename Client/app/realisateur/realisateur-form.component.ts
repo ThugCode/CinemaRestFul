@@ -18,13 +18,16 @@ export class RealisateurFormComponent {
         private location: Location
     ) { }
 
-    onSubmit() {
+    onSubmit(): void {
         this.realisateur.noRea = Math.floor(Math.random() * 1000) + Math.floor(Math.random() * 1000);
         this.realisateurService.addRealisateur(this.realisateur)
-            .subscribe(realisateur => {toastr.success("Ajout du réalisateur " + realisateur.nomRea + " " + realisateur.prenRea + " réussie"); this.location.back()});
+            .subscribe(realisateur => {
+                toastr.success("Ajout du réalisateur " + realisateur.nomRea + " " + realisateur.prenRea + " réussie");
+                this.location.back();
+            });
     }
 
-    goBack() {
+    goBack(): void {
         this.location.back();
     }
 }

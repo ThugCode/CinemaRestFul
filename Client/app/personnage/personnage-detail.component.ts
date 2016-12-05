@@ -36,6 +36,7 @@ export class PersonnageDetailComponent implements OnInit {
         .subscribe(personnage => { 
             this.personnage = personnage;
             toastr.success("Modification réussie");
+            this.location.back();
             });
     }
 }

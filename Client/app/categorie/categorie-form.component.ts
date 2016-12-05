@@ -19,21 +19,24 @@ export class CategorieFormComponent implements OnInit {
         private location: Location
     ) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.categorieService.getCategories()
             .subscribe(categories => this.categories = categories);
     }
 
-    onSubmit() {
+    onSubmit(): void {
         if (this.categories.find(cat => cat.codeCat == this.categorie.codeCat) != null) {
             toastr.error("Code catégorie déjà existant !");
         } else {
             this.categorieService.addCategorie(this.categorie)
-                .subscribe(categorie => { toastr.success("Ajout de la categorie " + categorie.libelleCat + " réussie"); this.location.back() });
+                .subscribe(categorie => {
+                    toastr.success("Ajout de la categorie " + categorie.libelleCat + " réussie");
+                    this.location.back();
+                });
         }
     }
 
-    goBack() {
+    goBack(): void {
         this.location.back();
     }
 }

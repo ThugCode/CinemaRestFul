@@ -13,7 +13,7 @@ export class ActeurService extends MainService<Acteur> {
     }
 
     getActeurs(): Observable<Acteur[]> {
-        return this.http.get(this.baseUrl).map(response => <Acteur[]> response.json().acteur);
+        return this.http.get(this.baseUrl).map(response => <Acteur[]>response.json().acteur);
     }
 
     getActeur(id: number): Observable<Acteur> {

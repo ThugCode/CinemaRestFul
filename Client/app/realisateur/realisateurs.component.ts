@@ -15,26 +15,25 @@ export class RealisateursComponent implements OnInit {
 
     constructor(private realisateurService: RealisateurService) { }
 
-    getRealisateurs() {
+    getRealisateurs(): void {
         this.realisateurService.getRealisateurs()
             .subscribe(realisateurs => this.realisateurs = realisateurs);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.getRealisateurs();
     }
 
-    selectedRealisateur(realisateur: Realisateur) {
+    selectedRealisateur(realisateur: Realisateur): void {
         this.realisateur = realisateur;
     }
 
-    deleteRealisateur() {
+    deleteRealisateur(): void {
         this.realisateurService.deleteRealisateur(this.realisateur.noRea)
             .subscribe(
             realisateur => {
                 toastr.success("Réalisateur " + realisateur.nomRea + " " + realisateur.prenRea + " supprimé");
                 this.getRealisateurs();
-            }
-            );
+            });
     }
 }

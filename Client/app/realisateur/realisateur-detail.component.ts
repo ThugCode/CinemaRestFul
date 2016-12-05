@@ -33,6 +33,10 @@ export class RealisateurDetailComponent implements OnInit {
 
     save(): void {
         this.realisateurService.updateRealisateur(this.realisateur)
-            .subscribe(realisateur => { this.realisateur = realisateur; toastr.success('Modification réussie'); });
+            .subscribe(realisateur => {
+                this.realisateur = realisateur;
+                toastr.success('Modification réussie');
+                this.location.back();
+            });
     }
 }

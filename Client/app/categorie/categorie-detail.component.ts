@@ -24,8 +24,8 @@ export class CategorieDetailComponent implements OnInit {
     ngOnInit(): void {
         this.route.params
             .switchMap((params: Params) => this.categorieService.getCategorie(params['code']))
-            .subscribe(categorie => this.categorie = categorie);        
-     }
+            .subscribe(categorie => this.categorie = categorie);
+    }
 
     goBack(): void {
         this.location.back();
@@ -33,6 +33,10 @@ export class CategorieDetailComponent implements OnInit {
 
     save(): void {
         this.categorieService.updateCategorie(this.categorie)
-            .subscribe(categorie => { this.categorie = categorie; toastr.success('Modification réussie'); });
+            .subscribe(categorie => {
+                this.categorie = categorie;
+                toastr.success('Modification réussie');
+                this.location.back();
+            });
     }
 }

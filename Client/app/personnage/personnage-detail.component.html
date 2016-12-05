@@ -1,10 +1,10 @@
-<div *ngIf="personnage">
-    <h2>{{personnage.nomPers}} details!</h2>
+<div class="col-md-6 col-lg-6" *ngIf="personnage">
+    <legend>Modificiation d'un personnage</legend>
     <div class="form-group">
         <label>Titre </label>
-        <input type="text" [(ngModel)]="personnage.nomPers" placeholder="Nom Personnage" />
+        <input type="text" class="form-control" [(ngModel)]="personnage.nomPers" placeholder="Nom Personnage" />
     </div>
 
-    <button (click)="goBack()">Retour</button>
-    <button (click)="save()">Sauvegarder</button>
+    <button class="btn btn-default" (click)="goBack()">Retour</button>
+    <button class="btn btn-primary" (click)="save()">Sauvegarder</button>
 </div>

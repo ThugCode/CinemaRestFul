@@ -15,28 +15,27 @@ export class FilmsComponent implements OnInit {
 
     constructor(private filmService: FilmService) { }
 
-    getFilms() {
+    getFilms(): void {
         this.filmService.getFilms()
             .subscribe(
             films => this.films = films
             );
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.getFilms();
     }
 
-    selectedFilm(film: Film) {
+    selectedFilm(film: Film): void {
         this.film = film;
     }
 
-    deleteFilm() {
+    deleteFilm(): void {
         this.filmService.deleteFilm(this.film.noFilm)
             .subscribe(
             film => {
                 toastr.success("Film " + film.titre + " supprimé");
                 this.getFilms();
-            }
-            );
+            });
     }
 }

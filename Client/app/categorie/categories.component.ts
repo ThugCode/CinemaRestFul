@@ -15,28 +15,27 @@ export class CategoriesComponent implements OnInit {
 
     constructor(private categorieService: CategorieService) { }
 
-    getCategories() {
+    getCategories(): void {
         this.categorieService.getCategories()
             .subscribe(
             categories => this.categories = categories
             );
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.getCategories();
     }
 
-    selectedCategorie(categorie: Categorie) {
+    selectedCategorie(categorie: Categorie): void {
         this.categorie = categorie;
     }
 
-    deleteCategorie() {
+    deleteCategorie(): void {
         this.categorieService.deleteCategorie(this.categorie.codeCat)
             .subscribe(
             categorie => {
                 toastr.success("Categorie " + categorie.libelleCat + " supprimée");
                 this.getCategories();
-            }
-            );
+            });
     }
 }

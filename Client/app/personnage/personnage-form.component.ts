@@ -27,7 +27,7 @@ export class PersonnageFormComponent implements OnInit {
         private location: Location
     ) { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.filmService.getFilms()
             .subscribe(films => this.films = films);
 
@@ -35,13 +35,16 @@ export class PersonnageFormComponent implements OnInit {
             .subscribe(acteurs => this.acteurs = acteurs);
     }
 
-    onSubmit() {
+    onSubmit(): void {
         this.personnage.id = new PersonnageId(this.personnage.film.noFilm, this.personnage.acteur.noAct);
         this.personnageService.addPersonnage(this.personnage)
-            .subscribe(personnage => { toastr.success("Ajout du personnage " + personnage.nomPers + " réussie"); this.location.back() });
+            .subscribe(personnage => {
+                toastr.success("Ajout du personnage " + personnage.nomPers + " réussie");
+                this.location.back();
+            });
     }
 
-    goBack() {
+    goBack(): void {
         this.location.back();
     }
 }

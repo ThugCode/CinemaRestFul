@@ -15,26 +15,25 @@ export class ActeursComponent implements OnInit {
 
     constructor(private acteurService: ActeurService) { }
 
-    getActeurs() {
+    getActeurs(): void {
         this.acteurService.getActeurs()
             .subscribe(acteurs => this.acteurs = acteurs);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.getActeurs();
     }
 
-    selectedActeur(acteur: Acteur) {
+    selectedActeur(acteur: Acteur): void {
         this.acteur = acteur;
     }
 
-    deleteActeur() {
-                this.acteurService.deleteActeur(this.acteur.noAct)
+    deleteActeur(): void {
+        this.acteurService.deleteActeur(this.acteur.noAct)
             .subscribe(
             acteur => {
-                toastr.success("Acteur " + acteur.nomAct +" "+ acteur.prenAct + " supprimé");
+                toastr.success("Acteur " + acteur.nomAct + " " + acteur.prenAct + " supprimé");
                 this.getActeurs();
-            }
-            );
+            });
     }
 }

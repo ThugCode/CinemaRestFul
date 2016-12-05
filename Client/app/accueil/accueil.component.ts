@@ -15,17 +15,12 @@ export class AccueilComponent implements OnInit {
 
     constructor(private filmService: FilmService, private router: Router) { }
 
-    getFilms() {
+    getFilms(): void {
         this.filmService.getFilms()
             .subscribe(films => this.films = films)
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.getFilms();
-    }
-
-    filmDetail() {
-        console.log("Je passe");
-        this.router.navigate(['/films/detail/'+ this.filmSelected.noFilm]);
     }
 }

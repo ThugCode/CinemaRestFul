@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 
 import { ActeurService } from './acteur.service';
@@ -11,7 +11,7 @@ import * as toastr from 'toastr';
     selector: 'acteur-form',
     templateUrl: 'app/acteur/acteur-form.component.html'
 })
-export class ActeurFormComponent implements OnInit {
+export class ActeurFormComponent {
     acteur: Acteur = new Acteur();
 
     constructor(
@@ -19,15 +19,16 @@ export class ActeurFormComponent implements OnInit {
         private location: Location
     ) { }
 
-    ngOnInit() { }
-
-    onSubmit() {
+    onSubmit(): void {
         this.acteur.noAct = Math.floor(Math.random() * 1000) + Math.floor(Math.random() * 1000);
         this.acteurService.addActeur(this.acteur)
-        .subscribe(acteur => {toastr.success("Acteur " + acteur.nomAct + " " + acteur.prenAct + " ajouté"); this.location.back()});
+            .subscribe(acteur => {
+                toastr.success("Acteur " + acteur.nomAct + " " + acteur.prenAct + " ajouté");
+                this.location.back();
+            });
     }
 
-    goBack() {
+    goBack(): void {
         this.location.back();
     }
 }

@@ -15,26 +15,25 @@ export class PersonnagesComponent implements OnInit {
 
     constructor(private personnageService: PersonnageService) { }
 
-    getPersonnages() {
+    getPersonnages(): void {
         this.personnageService.getPersonnages()
             .subscribe(personnages => this.personnages = personnages);
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.getPersonnages();
     }
 
-    selectedPersonnage(personnage: Personnage) {
+    selectedPersonnage(personnage: Personnage): void {
         this.personnage = personnage;
     }
 
-    deletePersonnage() {
+    deletePersonnage(): void {
         this.personnageService.deletePersonnage(this.personnage.id)
             .subscribe(
             personnage => {
                 toastr.success("Personnage " + personnage.nomPers + " supprimé");
                 this.getPersonnages();
-            }
-            );
+            });
     }
 }
